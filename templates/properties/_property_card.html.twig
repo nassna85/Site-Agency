@@ -1,0 +1,48 @@
+<div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="card shadow mb-5">
+        <a href="#">
+            <img src="{{ property.coverImage | default('http://placehold.it/') }}" class="card-img-top" alt="..." style="height:200px;width:100%;display:block;">
+        </a>
+
+        {% if(property.sold == 1) %}
+
+            <span class="badge badge-danger">
+
+                        {% if(property.action == 'vendre') %}
+
+                            Vendu
+
+                        {% else %}
+
+                            Loué
+
+                        {% endif %}
+
+                    </span>
+
+        {% endif %}
+
+        <div class="card-body">
+            <a href="#">
+                <h3 class="h5">{{ property.type }} à {{ property.action }}</h3>
+            </a>
+            <h4 class="h6">{{ property.postalCode }} - {{ property.city }}</h4><br/>
+            <h3 class="h5">Prix : <span class="color_price">{{ property.price }} €</span></h3><br>
+            <ul class="description_properties">
+                <li>
+                    <i class="fas fa-ruler"></i>
+                    {{ property.area }} m <sup>2</sup>
+                </li>
+                <li>
+                    <i class="fas fa-bed"></i>
+                    {{ property.bedrooms }} chambres
+                </li>
+                <li>
+                    <i class="fas fa-bath"></i>
+                    {{ property.shower }} douche
+                </li>
+            </ul>
+            <a href="{{ path('properties_show', {'id':property.id}) }}" class="btn btn-primary btn-sm">Voir cette offre</a>
+        </div>
+    </div>
+</div>

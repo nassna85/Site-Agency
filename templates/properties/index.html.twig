@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos propriétés{% endblock %}
+
+{% block body %}
+    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Nos Propriétés'} %}
+
+    <section id="all_properties_show">
+        <div class="container">
+            <h2 class="font-weight-bold">Nos Propriétés</h2>
+            <div class="divider_title"></div>
+
+            <div class="row">
+
+                {% for property in properties | reverse %}
+
+                    {% include 'properties/_property_card.html.twig' %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -10,17 +10,17 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Nos Biens
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Tous nos biens</a>
+                    <a class="dropdown-item" href="{{ path('properties_index') }}">Tous nos biens</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">A Vendre</a>
-                    <a class="dropdown-item" href="#">A Louer</a>
+                    <a class="dropdown-item" href="{{ path('properties_index_sale') }}">A Vendre</a>
+                    <a class="dropdown-item" href="{{ path('properties_index_rent') }}">A Louer</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -30,5 +30,52 @@
                 <a class="nav-link" href="#">Contact</a>
             </li>
         </ul>
+
+        <ul class="navbar-nav ml-auto">
+
+            {% if app.user %}
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink">
+                        <img src="{% if app.user.avatar %}{{ app.user.avatar }}{% else %}../images/avatar_default.png{% endif %}" class="avatar-mini" alt="{{ app.user.fullName }}"> {{ app.user.fullName }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
+                        <a href="#" class="dropdown-item">Créer une annonce</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Mon compte</a>
+                        <a href="#" class="dropdown-item">Modifier mon profil</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('admin_dashboard') }}" class="dropdown-item" target="_blank">Administration</a>
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('account_logout') }}">Se deconnecter</a>
+                    </div>
+                </li>
+
+            {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('account_login') }}">Se connecter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('account_registration') }}">Créer un compte</a>
+                </li>
+
+            {% endif %}
+
+        </ul>
     </div>
 </nav>
+
+{# SYSTEME DE FLASH #}
+
+{% for label, messages in app.flashes %}
+    <div class="container" style="margin-top: 100px;">
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}

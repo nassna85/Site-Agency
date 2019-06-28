@@ -5,15 +5,7 @@
 {% block body %}
 
     {# SECTION HEADER #}
-    <section id="home_header">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container text-center">
-                <h1 class="text-uppercase font-weight-bold">House Agency</h1>
-                <p class="h3 mt-3 mb-5 font-italic">Votre satisfaction, notre objectif</p>
-                <a href="#" class="btn btn-primary">Contacter nous</a>
-            </div>
-        </div>
-    </section>
+    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Accueil'} %}
 
     {# SECTION ABOUT #}
     <section id="about">
@@ -31,44 +23,100 @@
             <div class="divider_center"></div>
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card text-white bg-primary">
-                        <div class="card-body text-center">
-                            <h4 class="card-title text-white">
-                                <i class="fas fa-home"></i><br>
-                                Vente
-                            </h4>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ab, minus quia quo aspernatur consequatur cupiditate eius voluptas, voluptate fuga unde commodi temporibus! Magnam, quasi quia animi modi in qui deserunt maxime error amet cumque quaerat quae necessitatibus voluptatum sapiente accusamus repellendus fugit delectus distinctio nulla est, quo ea temporibus.
-                            </p>
-                        </div>
+                    <div class="card shadow p-3 bg-white text-center">
+                        <i class="fas fa-home"></i>
+                        <h4>Vente</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ab, minus quia quo aspernatur consequatur cupiditate eius voluptas, voluptate fuga unde commodi temporibus! Magnam, quasi quia animi modi in qui deserunt maxime error amet cumque quaerat quae necessitatibus voluptatum sapiente accusamus repellendus fugit delectus distinctio nulla est, quo ea temporibus.</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card text-white bg-primary">
-                        <div class="card-body text-center">
-                            <h4 class="card-title text-white">
-                                <i class="fas fa-key"></i><br>
-                                Location
-                            </h4>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi impedit asperiores quam. Est facilis odit sequi quae quibusdam a ab sed hic placeat? Cum, sint eligendi alias iusto aperiam sapiente dolorem. Odit error perferendis ut ipsum, deserunt nulla ea laboriosam, vitae provident repudiandae qui id laudantium, reiciendis harum quos praesentium?praesentium rem hic.
-                            </p>
-                        </div>
+                    <div class="card shadow p-3 bg-white text-center">
+                        <i class="fas fa-key"></i>
+                        <h4>Location</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, fuga quis doloribus quas, incidunt quia dolorum laudantium eos fugit mollitia aspernatur ex adipisci ducimus ipsum in! Ratione deleniti, fuga quod et excepturi animi accusantium explicabo minus architecto nisi est saepe. Totam cupiditate, praesentium rem hic consequuntur excepturi corrupti reprehenderit repellendus!
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card text-white bg-primary">
-                        <div class="card-body text-center">
-                            <h4 class="card-title text-white">
-                                <i class="fas fa-paint-brush"></i><br>
-                                Remise à neuf
-                            </h4>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi impedit asperiores quam. Est facilis odit sequi quae quibusdam a ab sed hic placeat? Cum, sint eligendi alias iusto aperiam sapiente dolorem. Odit error perferendis ut ipsum, deserunt nulla ea laboriosam, vitae provident repudiandae qui id laudantium, reiciendis harum quos praesentium?praesentium rem hic.
-                            </p>
-                        </div>
+                    <div class="card shadow p-3 bg-white text-center">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>Remise à neuf</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi impedit asperiores quam. Est facilis odit sequi quae quibusdam a ab sed hic placeat? Cum, sint eligendi alias iusto aperiam sapiente dolorem. Odit error perferendis ut ipsum, deserunt nulla ea laboriosam, vitae provident repudiandae qui id laudantium, reiciendis harum quos praesentium?praesentium rem hic.
+                        </p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {# SECTION LAST PROPERTIES #}
+    <section id="last_properties">
+        <div class="container">
+            <h2 class="text-center">Nos Dernières Propriétés</h2>
+            <div class="divider_center"></div>
+
+            <div class="row">
+
+                {% for lastProperty in lastProperties %}
+
+                    {% include 'properties/_property_card.html.twig' with {'property': lastProperty} %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    {# -------TESTIMONIALS---------- #}
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="text-center">Avis De Nos Clients</h2>
+            <div class="divider_center"></div>
+
+            <div class="row">
+
+                <div class="col-md-8 col-center m-auto">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+
+                            {% for lastComment in lastComments %}
+
+                                {% if lastComment.approved == 0 %}
+
+                                    <li data-target="#myCarousel" data-slide-to="{{ loop.index0 }}" {% if(loop.first) %}class="active"{% endif %}></li>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </ol>
+                        <!-- Wrapper for carousel items -->
+                        <div class="carousel-inner">
+
+                            {% for lastComment in lastComments %}
+
+                                <div class="item carousel-item {% if loop.first %}active{% endif %}">
+                                    <div class="img-box mb-3">
+                                        <img src="{{ lastComment.author.avatar | default('/images/avatar_default.png') }}" alt="Avatar de {{ lastComment.author.fullName }}">
+                                    </div>
+                                    <p class="testimonial">{{ lastComment.message | nl2br }}</p>
+                                    <p class="overview"><b>{{ lastComment.author.fullName }}</b></p>
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+                        <!-- Carousel controls -->
+                        <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
