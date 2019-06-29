@@ -431,6 +431,39 @@ section#password_edit input {
     border-color: #bdc3c7;
 }
 
+/********************************** CONTACT *******************************/
+section.contact.header img {
+    border: none;
+}
+
+section.contact.header h3 {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+section.contact.header p {
+    color: #282d32;
+    font-weight: bold;
+}
+
+section.contact.description {
+    margin-top: 60px;
+}
+
+section.contact.description i {
+    color: #375a7f;
+    font-size: 50px;
+    margin-bottom: 50px;
+    margin-top: 60px;
+}
+section.contact.description address, section.contact.description p {
+    font-weight: bold;
+}
+
+.map {
+    margin-top: 20px;
+}
+
 /********************************** FOOTER **********************************/
 
 .footer-dark {

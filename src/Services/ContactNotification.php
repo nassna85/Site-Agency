@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Entity\Contact;
 use App\Entity\ContactForProperty;
 use Twig\Environment;
 
@@ -24,7 +25,7 @@ class ContactNotification
         $this->renderer = $renderer;
     }
 
-    /*
+
     public function notifyContact(Contact $contact)
     {
         $message = (new \Swift_Message("House Agency - Demande de contact de " . $contact->getName()))
@@ -37,7 +38,7 @@ class ContactNotification
 
         $this->mailer->send($message);
     }
-    */
+
 
     public function notifyContactForProperty(ContactForProperty $contactProperty)
     {
