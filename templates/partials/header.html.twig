@@ -24,7 +24,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Insérer un bien</a>
+                <a class="nav-link" href="{{ path('properties_new') }}">Insérer un bien</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
@@ -43,8 +43,8 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
                         <a href="#" class="dropdown-item">Créer une annonce</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Mon compte</a>
-                        <a href="#" class="dropdown-item">Modifier mon profil</a>
+                        <a href="{{ path('account_profile') }}" class="dropdown-item">Mon compte</a>
+                        <a href="{{ path('account_edit') }}" class="dropdown-item">Modifier mon profil</a>
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('admin_dashboard') }}" class="dropdown-item" target="_blank">Administration</a>
                         {% endif %}

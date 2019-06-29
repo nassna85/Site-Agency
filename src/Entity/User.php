@@ -119,6 +119,11 @@ class User implements UserInterface
      */
     private $contactForProperties;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $active;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -162,6 +167,19 @@ class User implements UserInterface
     public function fullName()
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    /**
+     * Set Active in false
+     * @ORM\PrePersist()
+     * @return void
+     */
+    public function initializeUserActive()
+    {
+        if(empty($this->active))
+        {
+            $this->active = false;
+        }
     }
 
     public function getId(): ?int
@@ -391,6 +409,18 @@ class User implements UserInterface
                 $contactForProperty->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

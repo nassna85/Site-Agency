@@ -10,6 +10,40 @@
             <h2 class="font-weight-bold">Nos Propriétés</h2>
             <div class="divider_title"></div>
 
+            <div class="mb-5" style="background-color: #F5F5F5;padding: 20px;border-radius: 5px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_start(form) }}
+                        {{ form_row(form.action) }}
+                        {{ form_row(form.type) }}
+                        {{ form_row(form.maxPrice) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.minBedroom) }}
+                        {{ form_row(form.minArea) }}
+                        <div class="form-group mt-5">
+                            <button class="btn btn-info float-right" type="submit">Rechercher</button>
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+            {% if app.request.get('properties_search') %}
+
+                {% if properties | length == 0 %}
+
+                    <h3 style="margin-bottom: 100px;">Aucun résultat trouvé</h3>
+
+                {% else %}
+
+
+                    <h4 class="text-center mb-5">{{ properties | length }} résultat(s) trouvé(s)</h4>
+                {% endif %}
+
+            {% endif %}
+
             <div class="row">
 
                 {% for property in properties | reverse %}

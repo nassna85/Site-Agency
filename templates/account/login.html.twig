@@ -7,6 +7,15 @@
     {# SECTION HEADER #}
     {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Connection'} %}
 
+    {# CONFIRMATION IF TOKEN VALID #}
+    {% if app.request.query.get('validationSuccess') %}
+        <div class="container">
+            <div class="alert alert-success">
+                Félicitation, votre compte a bien été activé. Vous pouvez désormais vous connecter.
+            </div>
+        </div>
+    {% endif %}
+
     {# SECTION FORM LOGIN #}
     <section id="login_form">
         <div class="container">
@@ -17,8 +26,8 @@
 
                         {% if error %}
                             <div class="alert alert-danger">
-                                {# {{ error.messageKey|trans(error.messageData, 'security') }} #}
-                                Une erreur est survenue. Mot de passe ou email incorrect !
+                                 {{ error.messageKey|trans(error.messageData, 'security') }}
+                                {#Une erreur est survenue. Mot de passe ou email incorrect !#}
                             </div>
                         {% endif %}
 

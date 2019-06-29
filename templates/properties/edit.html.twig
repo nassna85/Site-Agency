@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du bien n° {{ property.id }}{% endblock %}
+
+{% form_theme form 'properties/_collection.html.twig' %}
+
+{% block body %}
+
+    {# SECTION EDIT PROPERTIES #}
+    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Modifier votre bien'} %}
+
+    {# SECTION EDIT FORM PROPERTY #}
+    <section id="edit_property_form">
+        <div class="container">
+            <h2 class="font-weight-bold">Modification du bien n° {{ property.id }}</h2>
+            <div class="divider_title"></div>
+
+            {% if(property.sold == 0) %}
+
+                <div class="row">
+                    <div class="col-md-1">&nbsp;</div>
+                    <div class="col-lg-10">
+                        <div class="card shadow p-5">
+
+                            {{ form_start(form) }}
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    {{ form_row(form.type) }}
+                                    {{ form_row(form.action) }}
+                                    {{ form_row(form.city) }}
+                                    {{ form_row(form.address) }}
+                                    {{ form_row(form.postalCode) }}
+                                    {{ form_row(form.price) }}
+                                    {{ form_row(form.description) }}
+                                </div>
+                                <div class="col">
+                                    {{ form_row(form.bedrooms) }}
+                                    {{ form_row(form.shower) }}
+                                    {{ form_row(form.area) }}
+                                    {{ form_row(form.coverImage) }}
+                                    {{ form_row(form.images) }}
+                                    <div class="form-group mt-5">
+                                        <button type="submit" class="btn btn-primary btn-sm float-right">Modifier votre annonce</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-warning">
+                    <p>Vous ne pouvez pas modifier votre annonce car celle-ci a été
+                        {% if(property.action == 'vendre') %}
+                            vendu
+                        {% else %}
+                            loué
+                        {% endif %}
+                    </p>
+                </div>
+
+            {% endif %}
+
+
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/properties.js"></script>
+{% endblock %}

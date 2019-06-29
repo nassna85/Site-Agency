@@ -7,6 +7,17 @@
     {# SECTION HEADER #}
     {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Accueil'} %}
 
+    {# IF TOKEN IS ALREADY VALIDATED #}
+    {% if app.request.query.get('tokenAlreadyValidated') %}
+
+        <div class="container">
+            <div class="alert alert-warning">
+                Le token a déjà été validé !
+            </div>
+        </div>
+
+    {% endif %}
+
     {# SECTION ABOUT #}
     <section id="about">
         <div class="container">

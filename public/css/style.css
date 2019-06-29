@@ -152,6 +152,9 @@ nav img {
     background-color: transparent;
     border-radius: 50%;
 }
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
 
 /********************************* HOMEPAGE *******************************/
 section#about {
@@ -368,6 +371,64 @@ section#login_form input {
 
 #registration_form .card {
     border-radius: 0px;
+}
+
+/**********************************CREATE NEW PROPERTY **********************/
+
+#new_properties_form input, #new_properties_form textarea {
+    border: 1px solid #bdc3c7;
+}
+#new_properties_form {
+    margin-bottom: 100px;
+}
+
+/********************************** EDIT PROPERTY **************************/
+
+#edit_property_form input, #edit_property_form textarea {
+    border: 1px solid #bdc3c7;
+}
+#edit_property_form {
+    margin-bottom: 100px;
+}
+
+/******************************* PROFILE USER ****************************/
+
+section#profile {
+    margin-top: 92px;
+}
+
+section#profile i {
+    color: #282d32;
+}
+section#profile div.jumbotron-fluid {
+    background-color: #F5F5F5;
+}
+section#profile textarea {
+    border-color: #bdc3c7;
+}
+
+@media screen and (max-width: 992px)
+{
+    section#profile .description_profile {
+        text-align: center;
+        margin-top: 30px;
+    }
+}
+
+/********************************* EDIT PROFILE USER ******************/
+section#edit_profile input {
+    border-color: #bdc3c7;
+}
+@media screen and (max-width: 576px) {
+    .btn_edit_profil_user {
+        margin-bottom: 10px;
+    }
+}
+
+/********************************** EDIT PASSWORD USER *********************/
+
+section#password_edit input {
+    border-color: #bdc3c7;
 }
 
 /********************************** FOOTER **********************************/

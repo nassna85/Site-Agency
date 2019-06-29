@@ -35,6 +35,32 @@ class PropertiesRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @param $action
+     * @param $type
+     * @param $maxPrice
+     * @param $minBedroom
+     * @param $minArea
+     * @return mixed
+     */
+    public function PropertiesSearchByCriteria($action, $type, $maxPrice, $minBedroom, $minArea)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.action = :action')
+            ->setParameter('action', $action)
+            ->andWhere('p.type = :type')
+            ->setParameter('type', $type)
+            ->andWhere('p.price <= :maxPrice')
+            ->setParameter('maxPrice', $maxPrice)
+            ->andWhere('p.bedrooms >= :minBedroom')
+            ->setParameter('minBedroom', $minBedroom)
+            ->andWhere('p.area >= :minArea')
+            ->setParameter('minArea', $minArea)
+            ->orderBy('p.price', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Properties[] Returns an array of Properties objects
     //  */

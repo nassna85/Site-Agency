@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ user.fullName }}{% endblock %}
+
+{% block body %}
+    <section id="profile">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 text-center">
+                        <img src="{{ user.avatar | default('/images/avatar_default.png') }}" class="avatar-medium" alt="Image de {{ user.fullName }}"><br>
+
+                        {% if user.properties | length > 0 %}
+                            <span class="badge badge-info mt-3">{{ user.properties| length }} annonce(s)</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-7 description_profile">
+                        <h3>
+                            <i class="fas fa-id-card"></i>
+                            {{ user.fullName }}
+                        </h3>
+                        <p>
+                            <i class="fas fa-at"></i>
+                            {{ user.email }}
+                        </p>
+                        <p>
+                            <i class="fas fa-calendar-alt"></i>
+                            Inscrit le {{ user.createdAt | date('d/m/Y') }}
+                        </p>
+
+                        {% if app.user %}
+
+                            <a href="{{ path('account_edit') }}" class="btn btn-primary btn-sm btn_edit_profil_user">Modifier mon profil</a>
+                            <a href="{{ path('account_passwordEdit') }}" class="btn btn-danger btn-sm">Modifier mon mot de passe</a>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2 class="text-left mt-5">Liste de vos annonces</h2>
+            <div class="divider_title"></div>
+
+            {% if user.properties | length > 0 %}
+
+                <div class="row">
+
+                    {% for property in user.properties %}
+
+                        {% include 'properties/_property_card.html.twig' %}
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-info mt-5">
+                    Vous n'avez pas encore d'annonces.
+                </div>
+
+            {% endif %}
+
+            <h2 class="text-left mt-5">Faites-nous savoir vos sentiments</h2>
+            <div class="divider_title"></div>
+
+            <p>Un message de remerciement ? n'hésitez pas et dites nous tout...</p>
+
+            {% if user.comments | length > 0 %}
+
+                <div class="alert alert-info" style="margin-bottom: 50px;">
+                    Vous avez déjà envoyé votre commentaire. Nous vous remercions pour votre confiance.
+                </div>
+
+            {% else %}
+
+                {{ form_start(form) }}
+
+                {{ form_widget(form) }}
+
+                <div class="form-group mb-5">
+                    <button type="submit" class="btn btn-primary">Envoyer votre commentaire</button>
+                </div>
+
+                {{ form_end(form) }}
+
+            {% endif %}
+
+        </div>
+    </section>
+{% endblock %}

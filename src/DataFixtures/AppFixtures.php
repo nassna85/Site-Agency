@@ -33,7 +33,8 @@ class AppFixtures extends Fixture
                   ->setEmail('naim@admin.com')
                   ->setAvatar("https://loremflickr.com/64/64")
                   ->setPassword($this->encoder->encodePassword($adminUser, 'password'))
-                  ->setRoles(['ROLE_ADMIN']);
+                  ->setRoles(['ROLE_ADMIN'])
+                  ->setActive(true);
         $manager->persist($adminUser);
 
 
@@ -46,7 +47,8 @@ class AppFixtures extends Fixture
                  ->setEmail($faker->email)
                  ->setAvatar("https://loremflickr.com/64/64")
                  ->setPassword($this->encoder->encodePassword($user, 'password'))
-                 ->setRoles(['ROLE_USER']);
+                 ->setRoles(['ROLE_USER'])
+                 ->setActive(true);
 
             $manager->persist($user);
             $manager->flush();

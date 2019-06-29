@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Demande de confirmation pour votre inscription</title>
+    </head>
+
+    <body>
+        <h1>Bonjour, {{ user.firstName }}</h1>
+        <p>Pour confirmer votre inscription, veuillez confirmer votre inscription en cliquant sur le lien: <a href="{{ url('account_validation_token', {'value':token}) }}">Je confirme mon inscription</a> </p>
+    </body>
+</html>
