@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des commentaires{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="margin-top: 120px;">
+        <h1 class="mb-5">Administration des commentaires</h1>
+        <div class="divider_title"></div>
+
+        <table id="table" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th class="text-center">Author</th>
+                <th class="text-center">Approved</th>
+                <th class="text-center">Date</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for comment in comments %}
+
+                <tr>
+                    <td>{{ comment.id }}</td>
+                    <td>{{ comment.message }}</td>
+                    <td class="text-center">{{ comment.author.fullName }}</td>
+                    <td class="text-center">
+                        <span class="badge badge-info">
+                            {{ comment.approved | default("0") }}
+                        </span>
+                    </td>
+                    <td class="text-center">{{ comment.createdAt | date('d/m/Y') }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('admin_comments_edit', {'id':comment.id}) }}" class="btn btn-sm btn-primary">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a href="{{ path('admin_comments_delete', {'id':comment.id}) }}" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce commentaire ?')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

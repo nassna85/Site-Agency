@@ -48,7 +48,11 @@
 
                 {% for property in properties | reverse %}
 
-                    {% include 'properties/_property_card.html.twig' %}
+                    {% if property.approved == 1 %}
+
+                        {% include 'properties/_property_card.html.twig' %}
+
+                    {% endif %}
 
                 {% endfor %}
 

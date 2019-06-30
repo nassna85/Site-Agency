@@ -1,0 +1,91 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edition du bien n° {{ property.id }}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        div.jumbotron-fluid {
+            background-color: #fff;
+        }
+        .form-control {
+            border : 1px solid #bdc3c7;
+        }
+    </style>
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
+        <div class="container mt-5">
+            <a href="{{ path('admin_properties_index') }}">Retour à la liste des biens</a>
+            <h1 class="my-5">Edition du bien n° {{ property.id }}</h1>
+            <div class="divider_title"></div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    {{ form_start(form) }}
+
+                    {{ form_row(form.type) }}
+                    {{ form_row(form.action) }}
+                    {{ form_row(form.city) }}
+                    {{ form_row(form.address) }}
+                    {{ form_row(form.postalCode) }}
+                    {{ form_row(form.area) }}
+                    {{ form_row(form.bedrooms) }}
+                    {{ form_row(form.shower) }}
+                    {{ form_row(form.images) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.coverImage) }}
+                    {{ form_row(form.price) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.author) }}
+                    {{ form_row(form.sold) }}
+                    {{ form_row(form.approved) }}
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success float-right">Confirmer</button>
+                    </div>
+                </div>
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block _admin_properties_images_widget %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _admin_properties_images_entry_row %}
+    <div id="block_{{ id }}">
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}
+
+{% block _admin_properties_images_entry_widget %}
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-4">
+            {% if value %}
+                <img src="{{ value.path }}" class="img-fluid" alt="">
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
+            {{ form_row(form.path) }}
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-danger btn-sm" data-action="delete" data-target="#block_{{ id }}">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/properties.js"></script>
+{% endblock %}

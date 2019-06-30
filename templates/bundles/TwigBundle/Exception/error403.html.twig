@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 403{% endblock %}
+
+{% block body %}
+    <section class="page_error_404">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mt-5">
+                    Oups ! Vous n'avez pas accès à cette page. Autorisation refusé.
+                </h1>
+                <p class="lead">Vous avez surement du vous tromper lors d'une manipulation. Quoi qu'il en soit, l'accès à cette page ne vous est pas autorisé.</p>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-sm" href="{{ path('homepage') }}" role="button">Page d'accueil</a>
+                <a class="btn btn-info btn-sm" href="{{ path('properties_index') }}" role="button">Voir nos propriétés</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

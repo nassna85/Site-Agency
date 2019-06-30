@@ -156,6 +156,42 @@ nav img {
     display: block;
 }
 
+/**************************** NAVBAR ADMIN *******************************/
+nav.bg-light {
+    background-color: #00bc8c !important;
+}
+.navbar-dark .navbar-nav a.nav-link {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.navbar-dark .navbar-nav a.nav-link:hover {
+    color: #2980b9 !important;
+}
+.navbar-brand {
+    color: #fff !important;
+    text-transform: uppercase;
+    font-size: 17px;
+}
+nav img {
+    background-color: transparent;
+    border-radius: 50%;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+nav.bg-light .dropdown-menu {
+    background-color: #00bc8c !important;
+    border-color: #00bc8c;
+}
+
+
 /********************************* HOMEPAGE *******************************/
 section#about {
     margin-top: 100px;
@@ -360,6 +396,13 @@ section#login_form input {
     border: 1px solid #bdc3c7;
 }
 
+/****************************** LOGIN FORM ADMIN *************************/
+.title_login_admin {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
 /******************************* LOGIN REGISTRATION USER ****************************/
 
 #registration_form {
@@ -462,6 +505,19 @@ section.contact.description address, section.contact.description p {
 
 .map {
     margin-top: 20px;
+}
+
+/********************************** DATA TABLE ADMIN *******************************/
+
+#table th, #table td {
+    color: #000;
+}
+
+/********************************* PAGE ERROR 403 / 404 ******************************/
+
+section.page_error_404 .jumbotron {
+    height: 100vh;
+    margin-bottom: 0px;
 }
 
 /********************************** FOOTER **********************************/

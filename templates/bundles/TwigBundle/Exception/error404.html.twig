@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 404{% endblock %}
+
+{% block body %}
+    <section class="page_error_404">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mt-5">
+                    Oups ! La page que vous recherchez n'éxiste pas.
+                </h1>
+                <p class="lead">On a surement du mal vous renseigner. Aucun problème, vous pouvez retourner à l'accueil ou voir nos annonces.</p>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-sm" href="{{ path('homepage') }}" role="button">Page d'accueil</a>
+                <a class="btn btn-info btn-sm" href="{{ path('properties_index') }}" role="button">Voir nos propriétés</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

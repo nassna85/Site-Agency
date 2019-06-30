@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>House Agency - Connexion à l'administration</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        {# GOOGLE FONT #}
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body style="background-color: #222 !important;">
+    <div class="container" id="login_admin">
+        <div class="title_login_admin">
+            <h3 class="text-white font-weight-bold">Connexion à l'administration</h3>
+            <span class="text-white">Vous êtes administrateur ? Vous pouvez alors vous connecter !</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card" style="background-color: #00bc8c;">
+                    <div class="card-header" style="background-color: #00bc8c;">
+                        <h4 class="card-title text-white">
+                            <i class="fas fa-lock" style="color:#375a7f;"></i>
+                            Connexion à l'administration
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+                        {% if hasError %}
+                            <div class="alert alert-danger">
+                                Votre mot de passe ou email est incorrect !
+                            </div>
+                        {% endif %}
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="email"></label>
+                                <input id="email" type="email" class="form-control" placeholder="Votre Email" name="_username" value="{{ username }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="password"></label>
+                                <input id="password" type="password" class="form-control" placeholder="Votre mot de passe" name="_password">
+                            </div>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-sm mt-3">
+                                    <i class="fas fa-check"></i>
+                                    Se Connecter
+                                </button>
+
+                                <a href="{{ path('homepage') }}" style="color:#fff;text-decoration:none;" class="btn btn-link pt-3">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Retour au site
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </body>
+</html>
+
+
+

@@ -1,0 +1,106 @@
+{% if is_granted("ROLE_ADMIN") %}
+
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Détail du bien n° {{ property.id }}{% endblock %}
+
+{% block body %}
+
+    <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+
+        <a href="{{ path('admin_properties_index') }}" class="btn btn-link btn-sm" style="color: #375a7f;text-decoration: none;">
+            <i class="fas fa-arrow-left"></i>
+            Retour à la liste des biens
+        </a>
+
+        <div class="title_show_property mb-5" style="border-left: 3px solid #375a7f;">
+            <h1 class="mt-5 h2 font-weight-bold pl-2">Bien n° {{ property.id }}</h1>
+            <span class="pl-2">{{ property.address }}</span> <br>
+            <span class="pl-2">{{ property.postalCode }} - {{ property.city }}</span><br><br>
+            <span class="pl-2">
+                        {% if(property.sold == 1) %}
+
+                            {% if(property.action == 'vendre') %}
+
+                                Ce bien a été <strong>vendu</strong>
+
+                            {% else %}
+
+                                Ce bien a été <strong>loué</strong>
+
+                            {% endif %}
+
+                        {% endif %}
+                    </span>
+        </div>
+
+        <div id="carouselShowProperty" class="carousel slide my-5" data-ride="carousel">
+            <ol class="carousel-indicators">
+
+                {% for image in property.images %}
+
+                    <li data-target="#carouselShowProperty" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
+
+                {% endfor %}
+
+            </ol>
+
+            <div class="carousel-inner">
+
+                {% for image in property.images %}
+
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ image.path }}" class="d-block w-100" alt="...">
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselShowProperty" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselShowProperty" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <h1>{{ property.price }} €</h1>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mt-5 font-weight-bold">Résumé</h3>
+                <div class="divider_title_all_properties"></div>
+
+                <dl class="row">
+                    <dt class="col-md-4">Lieu</dt>
+                    <dd class="col-md-8">{{ property.address }}</dd>
+                    <dt class="col-md-4">Type</dt>
+                    <dd class="col-md-8">{{ property.type }}</dd>
+                    <dt class="col-md-4">Status</dt>
+                    <dd class="col-md-8">A {{ property.action }}</dd>
+                    <dt class="col-md-4">Surface</dt>
+                    <dd class="col-md-8">{{ property.area }} m2</dd>
+                    <dt class="col-md-4">Chambres</dt>
+                    <dd class="col-md-8">{{ property.bedrooms }}</dd>
+                    <dt class="col-md-4">Douche</dt>
+                    <dd class="col-md-8">{{ property.shower }}</dd>
+                    <dt class="col-md-4">Insérée le</dt>
+                    <dd class="col-md-8">{{ property.createdAt | date('d/m/Y') }}</dd>
+                </dl>
+
+            </div>
+
+            <div class="col">
+                <h3 class="mt-5 font-weight-bold">Description</h3>
+                <div class="divider_title_all_properties"></div>
+                {{ property.description | raw | nl2br }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% endif %}

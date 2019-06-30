@@ -82,7 +82,11 @@ class Token
 
     public function isValid()
     {
-        $interval = new \DateInterval('PT6H');
-        return $this->createdAt->add($interval) >= new \DateTime();
+        //$interval = new \DateInterval('PT6H');
+        //return $this->createdAt->add($interval) >= new \DateTime();
+
+        $date = $this->createdAt;
+        return $date->add(new \DateInterval('PT6H'));
+
     }
 }

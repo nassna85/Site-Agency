@@ -45,9 +45,6 @@
                         <div class="dropdown-divider"></div>
                         <a href="{{ path('account_profile') }}" class="dropdown-item">Mon compte</a>
                         <a href="{{ path('account_edit') }}" class="dropdown-item">Modifier mon profil</a>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path('admin_dashboard') }}" class="dropdown-item" target="_blank">Administration</a>
-                        {% endif %}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('account_logout') }}">Se deconnecter</a>
                     </div>

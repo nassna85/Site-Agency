@@ -15,8 +15,8 @@ class HomeController extends AbstractController
      */
     public function index(PropertiesRepository $repo, CommentsRepository $repoComment)
     {
-        $lastProperties = $repo->findLastProperties(3,0);
-        $lastComments = $repoComment->findLastComments(3, 0);
+        $lastProperties = $repo->findLastProperties(3,1);
+        $lastComments = $repoComment->findLastComments(3, 1);
 
         return $this->render('home/index.html.twig', [
             'lastProperties' => $lastProperties,
