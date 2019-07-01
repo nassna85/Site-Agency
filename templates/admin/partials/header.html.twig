@@ -39,13 +39,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ path('admin_contactForProperty_index') }}">
                     <i class="fas fa-info"></i>
                     Contact/Proriété
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ path('admin_contact_index') }}">
                     <i class="fas fa-envelope"></i>
                     Contact
                 </a>
@@ -68,7 +68,7 @@
                         <img src="{% if app.user.avatar %}{{ app.user.avatar }}{% else %}../images/avatar_default.png{% endif %}" class="avatar-mini" alt="{{ app.user.fullName }}"> {{ app.user.fullName }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountUserDropdownLink">
-                        <a class="dropdown-item" href="#">Créer un User/Admin</a>
+                        <a class="dropdown-item" href="{{ path('admin_account_registrationUserAdmin') }}">Créer un User/Admin</a>
                         <a class="dropdown-item" href="{{ path('admin_account_logout') }}">Se deconnecter</a>
                     </div>
                 </li>

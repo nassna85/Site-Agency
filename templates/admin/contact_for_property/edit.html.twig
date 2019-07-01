@@ -1,6 +1,6 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Modification du commentaire n° {{ comment.id }}{% endblock %}
+{% block title %}Modification du contact/propriété n° {{ contactForProperty.id }}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -12,11 +12,11 @@
 
 {% block body %}
     <div class="container" style="margin-top: 150px;height: 100vh;">
-        <a href="{{ path('admin_comments_index') }}">
+        <a href="{{ path('admin_contactForProperty_index') }}">
             <i class="fas fa-arrow-left"></i>
-            Retour à la liste des commentaires
+            Retour à la liste des contacts/propriétés
         </a>
-        <h2 class="mt-3 font-weight-bold">Modification du commentaire n° {{ comment.id }}</h2>
+        <h2 class="mt-3 font-weight-bold">Modification du contact/propriété n° {{ contactForProperty.id }}</h2>
         <div class="divider_title"></div>
 
         {{ form_start(form) }}

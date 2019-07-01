@@ -3,5 +3,191 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <h1>Page Dashboard</h1>
+    <div class="container" style="margin-top: 120px;">
+        <h1 class="font-weight-bold">Dashboard</h1>
+        <div class="divider_title"></div>
+
+        <div class="row mb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-white">
+                            <i class="fas fa-newspaper"></i>
+                        </h5>
+                        <p class="card-text text-center text-white">{{ stats.properties }} Annonces</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-white">
+                            <i class="fas fa-users"></i>
+                        </h5>
+                        <p class="card-text text-center text-white">{{ stats.users }} Utilisateurs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-secondary mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-white">
+                            <i class="fas fa-info"></i>
+                        </h5>
+                        <p class="card-text text-center text-white">{{ stats.contactProperty }} Contacts/Propriétés</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-danger mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-white">
+                            <i class="fas fa-envelope"></i>
+                        </h5>
+                        <p class="card-text text-center text-white">{{ stats.contacts }} Contacts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-white">
+                            <i class="fas fa-comments"></i>
+                        </h5>
+                        <p class="card-text text-center text-white">{{ stats.comments }} Commentaires</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-center font-weight-bold mb-5">Informations :</h2>
+
+        <h4 class="mb-4 font-weight-bold">Les Propriétés à approuver</h4>
+
+        {% if stats.propertiesNoApprovedCount > 0 %}
+
+            <div class="alert alert-warning">
+                <i class="fas fa-arrow-right"></i>
+                Vous avez {{ stats.propertiesNoApprovedCount }} propriétés à approuver !
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-info">
+                <i class="fas fa-arrow-right"></i>
+                Toutes les propriétés ont été approuvées
+            </div>
+
+        {% endif %}
+
+        <h4 class="mt-5 mb-4 font-weight-bold">Les commentaires à approuver</h4>
+
+        {% if stats.commentsNoApprovedCount > 0 %}
+
+            <div class="alert alert-warning">
+                <i class="fas fa-arrow-right"></i>
+                Vous avez {{ stats.commentsNoApprovedCount }} propriétés à approuver !
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-info">
+                <i class="fas fa-arrow-right"></i>
+                Tous les commentaires ont été approuvés !
+            </div>
+
+        {% endif %}
+
+        <h4 class="mt-5 mb-4 font-weight-bold">Demande de contact pour propriétés</h4>
+
+        {% if stats.contactPropertyNoAnsweredCount > 0 %}
+
+            <div class="alert alert-danger">
+                <i class="fas fa-arrow-right"></i>
+                Vous avez {{ stats.contactPropertyNoAnsweredCount }} demandes de contacts <strong>non répondu !</strong>
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-info">
+                <i class="fas fa-arrow-right"></i>
+                Tous les demandes de contacts pour les propriétés ont été repondu !
+            </div>
+
+        {% endif %}
+
+
+        <div class="row" style="margin-top: 100px;">
+            <div class="col-lg-6">
+                <div class="alert alert-success">
+                    <h2 class="alert-heading my-3">Les Propriétés les plus récentes</h2>
+                    <table class="table table-hover text-white">
+                        <thead>
+                        <tr>
+                            <th>Id de la propriété</th>
+                            <th>Propriétaire</th>
+                            <th class="text-center">Prix</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for lastProperty in lastProperties %}
+
+                            <tr>
+                                <td>{{ lastProperty.id }}</td>
+                                <td>
+                                    <img src="{{lastProperty.author.avatar | default('/images/avatar_default.png')}}" alt="Avatar de {{ lastProperty.author.fullName }}" class="avatar-mini img-fluid">
+                                    {{ lastProperty.author.fullName }}
+                                </td>
+                                <td class="text-center">
+                                    {{ lastProperty.price | number_format(2, ',', ' ') }} €
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="alert alert-primary">
+                    <h2 class="alert-heading my-3">Les plus anciennes Propriétés</h2>
+                    <table class="table table-hover text-white">
+                        <thead>
+                        <tr>
+                            <th>Id de la propriété</th>
+                            <th>Propriétaire</th>
+                            <th class="text-center">Prix</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for oldProperty in oldProperties %}
+
+                            <tr>
+                                <td>{{ oldProperty.id }}</td>
+                                <td>
+                                    <img src="{{ oldProperty.author.avatar }}" alt="Avatar de {{ oldProperty.author.fullName }}" class="avatar-mini img-fluid">
+                                    {{ oldProperty.author.fullName }}
+                                </td>
+                                <td class="text-center">
+                                    {{ oldProperty.price | number_format(2, ',', ' ') }} €
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+

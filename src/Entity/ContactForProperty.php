@@ -46,6 +46,11 @@ class ContactForProperty
     private $property;
 
     /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $answered = false;
+
+    /**
      * Initialize Automatically CreatedAt Contact for property
      * @ORM\PrePersist()
      * @throws \Exception
@@ -107,6 +112,18 @@ class ContactForProperty
     public function setProperty(?Properties $property): self
     {
         $this->property = $property;
+
+        return $this;
+    }
+
+    public function getAnswered(): ?bool
+    {
+        return $this->answered;
+    }
+
+    public function setAnswered(bool $answered): self
+    {
+        $this->answered = $answered;
 
         return $this;
     }

@@ -36,6 +36,19 @@ class PropertiesRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param $limit
+     * @return Properties[]
+     */
+    public function findOldProperties($limit)
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * @param $action
      * @param $type
      * @param $maxPrice

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-     {% if property.approved == 0 %}
+     {% if property.approved == 1 %}
 
         {# -------------IF ERROR FORM SEND---------------- #}
 
@@ -169,7 +169,7 @@
         </div>
 
     {% else %}
-        <div class="jumbotron jumbotron-fluid" style="height: 100vh;">
+        <div class="jumbotron jumbotron-fluid" style="height: 100vh;background-color: #fff;">
             <div class="container" style="margin-top: 100px;">
                 <div class="alert alert-info" style="margin: 0 auto;">
                     Votre bien n'a pas encore été confirmé par l'administration. Un peu de patience...
