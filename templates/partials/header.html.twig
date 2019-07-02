@@ -68,7 +68,7 @@
 {# SYSTEME DE FLASH #}
 
 {% for label, messages in app.flashes %}
-    <div class="container" style="margin-top: 100px;">
+    <div class="container animated fadeInDown delay-0.9s fast" style="margin-top: 100px;">
         <div class="alert alert-{{ label }}">
             {% for message in messages %}
                 <p>{{ message }}</p>

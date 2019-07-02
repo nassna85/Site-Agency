@@ -22,8 +22,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
                     <a class="dropdown-item" href="{{ path('admin_properties_index') }}">Liste des propriétés</a>
-                    <a class="dropdown-item" href="#">Liste des options</a>
-                    <a class="dropdown-item" href="#">Ajouter une option</a>
+                    <a class="dropdown-item" href="{{ path('admin_propertiesOptions_index') }}">Liste des options</a>
+                    <a class="dropdown-item" href="{{ path('admin_propertiesOptions_create') }}">Ajouter une option</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -82,7 +82,7 @@
 {# SYSTEME DE FLASH #}
 
 {% for label, messages in app.flashes %}
-    <div class="container" style="margin-top: 100px;">
+    <div class="container animated fadeInDown delay-0.9s fast" style="margin-top: 100px;">
         <div class="alert alert-{{ label }}">
             {% for message in messages %}
                 <p>{{ message }}</p>

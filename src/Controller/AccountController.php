@@ -38,7 +38,7 @@ class AccountController extends AbstractController
 
         return $this->render('account/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error
+            'error' => $error,
         ]);
     }
 

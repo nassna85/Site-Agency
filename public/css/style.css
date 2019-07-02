@@ -35,11 +35,48 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 5px;
     color: #375a7f;
 }
-label {
+@media screen and (max-width: 576px)
+{
+    #header_jumbotron h1 {
+        font-size: 2rem;
+    }
+    #header_jumbotron p.h3 {
+        font-size: 1rem;
+    }
+    #header_jumbotron div.jumbotron-fluid p.text-left {
+        bottom: -10px;
+        font-size: 0.8rem;
+    }
+    #header_jumbotron .btn {
+        font-size: 0.8rem;
+    }
+}
+@media screen and (min-width: 577px) and (max-width: 991px)
+{
+    #header_jumbotron h1 {
+        font-size: 2.5rem;
+    }
+    #header_jumbotron p.h3 {
+        font-size: 1.5rem;
+    }
+}
+@media screen and (min-width: 992px)
+{
+    #header_jumbotron h1 {
+        font-size: 3rem;
+    }
+    #header_jumbotron p.h3 {
+        font-size: 2rem;
+    }
+}
+label, legend {
     color: #282d32;
     font-weight: bold;
 }
 div#contact_for_property textarea {
+    border: 1px solid #bdc3c7;
+}
+.form-control {
     border: 1px solid #bdc3c7;
 }
 .form-error-icon {
@@ -193,39 +230,214 @@ nav.bg-light .dropdown-menu {
 
 
 /********************************* HOMEPAGE *******************************/
-section#about {
-    margin-top: 100px;
+
+/*********homepage carousel main**********/
+header .carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-section#service {
-    margin-top: 100px;
-    background-color: #f5f5f5;
-    padding: 20px 0px;
+header .carousel_home .carousel-inner .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%);
+    bottom: 0;
+    top: 50%;
+    height: 200px;
+    border-radius: 5px;
 }
-section#service i {
-    font-size: 50px;
-    padding-bottom: 30px;
-    color: #282d32;
-}
-section#service h4 {
-    padding-bottom: 30px;
+header .carousel_home .carousel-inner .carousel-caption h5 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 @media screen and (max-width: 992px)
 {
-    section#service .col-lg-4 {
-        margin-bottom: 30px;
+    header .carousel_home #carouselHomepage .carousel-inner .carousel-caption h5 {
+        font-size: 2rem;
+    }
+    header .carousel_home .carousel-inner .carousel-caption p {
+        font-size: 17px !important;
     }
 }
+header .carousel_home .carousel-inner .carousel-caption p {
+    font-size: 20px;
+}
+header .carousel-indicators li {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #375a7f;
+}
+/************homepage section about************/
+section#about {
+    margin-top: 100px;
+}
+@media screen and (max-width: 767px)
+{
+    section#about h2 {
+        font-size: 1.5rem;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px)
+{
+    section#about h2 {
+        font-size: 2rem;
+    }
+}
+section#about .about_description ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+section#about .about_description ul li {
+    display: block;
+    padding: 5px 0;
+}
+section#about .about_description ul li i {
+    color: #375a7f;
+    padding-right: 10px;
+    font-size: 12px;
+}
+/************homepage section services*************/
+section#services {
+    margin-top: 100px;
+    background-color: #f1f2f6;
+}
+@media screen and (max-width: 767px)
+{
+    section#services h2 {
+        font-size: 1.5rem;
+    }
+    #carousel-service .carousel-inner {
+        text-align: center;
+    }
+    .service.carousel h4,.service.carousel p {
+        text-align: center !important;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px)
+{
+    section#services h2 {
+        font-size: 2rem;
+    }
+    #carousel-service .carousel-inner {
+        text-align: center;
+    }
+    .service.carousel h4,.service.carousel p {
+        text-align: center !important;
+    }
+}
+#carousel-service {
+    margin-top: 60px;
+}
+
+@media screen and (max-width:576px)
+{
+    .service.carousel h4 {
+        font-size: 20px;
+    }
+    .service.carousel p {
+        font-size: 12px;
+    }
+    #carousel-service {
+        margin-top: 20px;
+    }
+}
+.service.carousel h4,.service.carousel p {
+    text-align: left;
+}
+
+
+.service .carousel-control{
+    background: none;
+}
+
+.service .screenshot{
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.service .screenshot img{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 4px;
+    /*width: 400px;*/
+}
+
+.service .carousel-indicators {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    top: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 5px;
+    padding-bottom: 8px;
+    width: 100%;
+    background: #f1f2f6;
+}
+
+.service .carousel-indicators .active {
+    width: 45px;
+    height: 5px;
+    border: none;
+    border-radius: 0;
+}
+
+.service .carousel-indicators li {
+    display: inline-block;
+    margin: 1px;
+    width: 45px;
+    height: 5px;
+    border: none;
+    border-radius: 0;
+    background: #375a7f;
+    text-indent: -999px;
+    cursor: pointer;
+}
+
+/****************homepage section last properties**********/
 section#last_properties {
     margin-top: 100px;
 }
+@media screen and (max-width: 767px)
+{
+    section#last_properties h2 {
+        font-size: 1.5rem;
+    }
+}
 
-/************************** HOMEPAGE : section testimony *********************************/
+@media screen and (min-width: 768px) and (max-width: 992px)
+{
+    section#last_properties h2 {
+        font-size: 2rem;
+    }
+}
 
+/*************homepage section testimony*******************/
 section#testimonials {
     background-color: #f1f2f6;
     padding: 30px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     margin-top: 70px;
+}
+@media screen and (max-width: 767px)
+{
+    section#testimonials h2 {
+        font-size: 1.5rem;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px)
+{
+    section#testimonials h2 {
+        font-size: 2rem;
+    }
 }
 
 section#testimonials .col-center {
@@ -339,6 +551,19 @@ section#all_properties_show {
 }
 section#all_properties_show .card {
     background-color: #fff;
+}
+
+@media screen and (max-width: 992px)
+{
+    section#all_properties_show h2 {
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 768px)
+{
+    section#properties_for_rent h2, section#properties_for_sale h2 {
+        font-size: 1.5rem;
+    }
 }
 
 /******************************* SHOW ONE PROPERTY ***************************/

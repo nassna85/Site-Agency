@@ -91,6 +91,24 @@
                     <dd class="col-md-8">{{ property.createdAt | date('d/m/Y') }}</dd>
                 </dl>
 
+                {% if property.options | length > 0 %}
+
+                    <h3 class="mt-5 font-weight-bold">Les options supplémentaires</h3>
+                    <div class="divider_title"></div>
+
+                    <div class="row">
+
+                        {% for option in property.options %}
+
+                            <dt class="col-md-4">{{ option.name }}</dt>
+                            <dd class="col-md-8">Oui</dd>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
             </div>
 
             <div class="col">

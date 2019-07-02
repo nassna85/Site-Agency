@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Options;
 use App\Entity\Properties;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -133,6 +135,18 @@ class PropertiesType extends AbstractType
                     'allow_add' => true,
                     'allow_delete' => true,
                 ]
+            )
+            ->add(
+                'options',
+                EntityType::class, [
+                    'class' => Options::class,
+                    'choice_label' => "name",
+                    'multiple' => true,
+                    'expanded' => true,
+                    'label' => "Séléctionner des options",
+                    'required' => false
+                ]
+
             )
         ;
     }

@@ -4,8 +4,50 @@
 
 {% block body %}
 
-    {# SECTION HEADER #}
-    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Accueil'} %}
+    {# ----------------SECTION HEADER CAROUSEL FULL SCREEN----------- #}
+
+    <header>
+        <div class="carousel_home">
+            <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouseHomepage" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselHomepage" data-slide-to="1"></li>
+                    <li data-target="#carouselHomepage" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="background-image: url('/images/carousel_home1.jpg')">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="h1">Votre satisfaction</h5>
+                            <p>Notre équipe est à votre disposition afin de trouver le bien fait pour vous !</p>
+                            <a href="{{ path('contact_index') }}" class="btn btn-primary">Contacter nous</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('/images/carousel_home2.jpg')">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="h1">Valorisation de votre bien</h5>
+                            <p>Nous réalisons une remise à neuf de votre bien afin de mettre toutes les chances de votre côté.</p>
+                            <a href="{{ path('contact_index') }}" class="btn btn-primary">Contacter nous</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('/images/carousel_home3.jpg')">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="h1">Nous vous accompagnons</h5>
+                            <p>Nous prenons l'engagement de vous accompagner jusqu'à l'aboutissement de votre projet immobilier.</p>
+                            <a href="{{ path('contact_index') }}" class="btn btn-primary">Contacter nous</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselHomepage" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselHomepage" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
     {# IF TOKEN IS ALREADY VALIDATED #}
     {% if app.request.query.get('tokenAlreadyValidated') %}
@@ -21,49 +63,121 @@
     {# SECTION ABOUT #}
     <section id="about">
         <div class="container">
-            <h2 class="text-center">Qui Sommes-Nous ?</h2>
-            <div class="divider_center"></div>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum asperiores, fuga vitae blanditiis molestias corrupti harum, necessitatibus itaque delectus neque ducimus, aliquid repellat fugit nam nihil enim earum? Dolorem quos nulla nihil consequatur hic assumenda nobis iste perspiciatis? Voluptatibus quae ullam consequatur iste voluptatem excepturi sapiente. Impedit, distinctio nam dolor, in, obcaecati doloribus nemo temporibus eius ex officiis asperiores tempore consectetur aperiam. Repellat consequatur amet, voluptas quo cumque vitae eaque recusandae! Quia distinctio maiores atque beatae sit eius nihil, labore similique voluptates ea quod veritatis dolor corporis nostrum, odit iste ut laudantium repudiandae quaerat neque natus nobis ullam animi numquam.</p>
-        </div>
-    </section>
-
-    {# SECTION SERVICES #}
-    <section id="service">
-        <div class="container">
-            <h2 class="text-center">Nos Services</h2>
+            <h2 class="text-center font-weight-bold">Qui Sommes-Nous ?</h2>
             <div class="divider_center"></div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="card shadow p-3 bg-white text-center">
-                        <i class="fas fa-home"></i>
-                        <h4>Vente</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ab, minus quia quo aspernatur consequatur cupiditate eius voluptas, voluptate fuga unde commodi temporibus! Magnam, quasi quia animi modi in qui deserunt maxime error amet cumque quaerat quae necessitatibus voluptatum sapiente accusamus repellendus fugit delectus distinctio nulla est, quo ea temporibus.</p>
-                    </div>
+                <div class="col-lg-6 mb-3">
+                    <img src="https://cdn.pixabay.com/photo/2018/07/27/00/32/apartment-3564955_960_720.jpg" alt="Image Accueil" class="img-fluid">
                 </div>
-                <div class="col-lg-4">
-                    <div class="card shadow p-3 bg-white text-center">
-                        <i class="fas fa-key"></i>
-                        <h4>Location</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, fuga quis doloribus quas, incidunt quia dolorum laudantium eos fugit mollitia aspernatur ex adipisci ducimus ipsum in! Ratione deleniti, fuga quod et excepturi animi accusantium explicabo minus architecto nisi est saepe. Totam cupiditate, praesentium rem hic consequuntur excepturi corrupti reprehenderit repellendus!
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card shadow p-3 bg-white text-center">
-                        <i class="fas fa-paint-brush"></i>
-                        <h4>Remise à neuf</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi impedit asperiores quam. Est facilis odit sequi quae quibusdam a ab sed hic placeat? Cum, sint eligendi alias iusto aperiam sapiente dolorem. Odit error perferendis ut ipsum, deserunt nulla ea laboriosam, vitae provident repudiandae qui id laudantium, reiciendis harum quos praesentium?praesentium rem hic.
-                        </p>
+                <div class="col-lg-6">
+                    <h5 class="text-uppercase font-weight-bold">Agence Immobilière</h5>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <div class="about_description">
+                        <ul class="font-italic font-weight-bold text-secondary">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Expert dans la vente de biens
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Tous nos biens sont contrôlés
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                25 ans d'expériences
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Notre device, votre satisfaction
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    {# SECTION SERVICES #}
+    <section id="services" class="home-section p-5">
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="text-center font-weight-bold">Nos Services</h2>
+                <div class="divider_center"></div>
+                <p class="text-center">Fort de notre expérience, nous proposons des services efficaces...</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="carousel-service" class="service carousel slide" data-ride="carousel">
+                        <!-- slides -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="animated bounceInLeft">
+                                            <h4 class="font-weight-bold">Vente de biens</h4>
+                                            <p class="font-weight-bold text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                                labore et dolore magna.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="screenshot animated bounceInRight">
+                                            <img src="/images/img-vente.jpg" class="img-fluid" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="animated bounceInLeft">
+                                            <h4 class="font-weight-bold">Location de biens</h4>
+                                            <p class="font-weight-bold text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                                labore et dolore magna.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="screenshot animated bounceInRight">
+                                            <img src="/images/img-location.jpg" class="img-fluid" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="animated bounceInLeft">
+                                            <h4 class="font-weight-bold">Remise à neuf</h4>
+                                            <p class="font-weight-bold text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                                labore et dolore magna.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="screenshot animated bounceInRight">
+                                            <img src="/images/renovation.jpg" class="img-fluid" alt="Image de renovation" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-service" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-service" data-slide-to="1"></li>
+                            <li data-target="#carousel-service" data-slide-to="2"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
     {# SECTION LAST PROPERTIES #}
     <section id="last_properties">
         <div class="container">
-            <h2 class="text-center">Nos Dernières Propriétés</h2>
+            <h2 class="text-center font-weight-bold">Nos Dernières Propriétés</h2>
             <div class="divider_center"></div>
 
             <div class="row">
@@ -81,7 +195,7 @@
     {# -------TESTIMONIALS---------- #}
     <section id="testimonials">
         <div class="container">
-            <h2 class="text-center">Avis De Nos Clients</h2>
+            <h2 class="text-center font-weight-bold">Avis De Nos Clients</h2>
             <div class="divider_center"></div>
 
             <div class="row">
@@ -93,7 +207,7 @@
 
                             {% for lastComment in lastComments %}
 
-                                {% if lastComment.approved == 0 %}
+                                {% if lastComment.approved == 1 %}
 
                                     <li data-target="#myCarousel" data-slide-to="{{ loop.index0 }}" {% if(loop.first) %}class="active"{% endif %}></li>
 

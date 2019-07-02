@@ -2,23 +2,15 @@
 
 {% block title %}Edition du bien n° {{ property.id }}{% endblock %}
 
-{% block stylesheets %}
-    <style>
-        div.jumbotron-fluid {
-            background-color: #fff;
-        }
-        .form-control {
-            border : 1px solid #bdc3c7;
-        }
-    </style>
-{% endblock %}
-
 {% form_theme form _self %}
 
 {% block body %}
-    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;background-color: #fff;">
         <div class="container mt-5">
-            <a href="{{ path('admin_properties_index') }}">Retour à la liste des biens</a>
+            <a href="{{ path('admin_properties_index') }}">
+                <i class="fas fa-arrow-left"></i>
+                Retour à la liste des biens
+            </a>
             <h2 class="my-5 font-weight-bold">Edition du bien n° {{ property.id }}</h2>
             <div class="divider_title"></div>
 
@@ -42,6 +34,7 @@
                     {{ form_row(form.coverImage) }}
                     {{ form_row(form.price) }}
                     {{ form_row(form.description) }}
+                    {{ form_row(form.options) }}
                     {{ form_row(form.author) }}
                     {{ form_row(form.sold) }}
                     {{ form_row(form.approved) }}

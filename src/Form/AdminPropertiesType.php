@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Options;
 use App\Entity\Properties;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -150,8 +151,21 @@ class AdminPropertiesType extends AbstractType
                 'author',
                 EntityType::class, [
                     'class' => User::class,
-                    'choice_label' => 'fullName'
+                    'choice_label' => 'fullName',
+                    'label' => "Auteur"
                 ]
+            )
+            ->add(
+                'options',
+                EntityType::class, [
+                    'class' => Options::class,
+                    'choice_label' => "name",
+                    'multiple' => true,
+                    'expanded' => true,
+                    'label' => "Séléctionner des options",
+                    'required' => false
+                ]
+
             )
         ;
     }

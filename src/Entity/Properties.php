@@ -179,10 +179,16 @@ class Properties
      */
     private $contactForProperties;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Options", inversedBy="properties")
+     */
+    private $options;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->contactForProperties = new ArrayCollection();
+        $this->options = new ArrayCollection();
     }
 
     /**
@@ -466,6 +472,32 @@ class Properties
             if ($contactForProperty->getProperty() === $this) {
                 $contactForProperty->setProperty(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Options[]
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(Options $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Options $option): self
+    {
+        if ($this->options->contains($option)) {
+            $this->options->removeElement($option);
         }
 
         return $this;

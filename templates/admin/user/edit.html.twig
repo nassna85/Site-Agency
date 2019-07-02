@@ -2,19 +2,8 @@
 
 {% block title %}Modification de l'utilisateur {{ user.fullName }}{% endblock %}
 
-{% block stylesheets %}
-    <style>
-        div.jumbotron-fluid {
-            background-color: #fff;
-        }
-        .form-control {
-            border : 1px solid #bdc3c7;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
-    <div class="jumbotron jumbotron-fluid" style="height: 100vh;margin-bottom: 0px;">
+    <div class="jumbotron jumbotron-fluid" style="height: 100vh;margin-bottom: 0px;background-color: #fff;">
         <div class="container" style="margin-top: 100px;">
             <a href="{{ path('admin_users_index') }}">
                 <i class="fas fa-arrow-left"></i>

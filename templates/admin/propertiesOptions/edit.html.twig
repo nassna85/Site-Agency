@@ -1,10 +1,10 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Inscription d'un utilisateur{% endblock %}
+{% block title %}Modification d'une option{% endblock %}
 
-{% block body%}
-    <div class="container" style="margin-top: 150px;">
-        <h2 class="mb-5 font-weight-bold">Inscription d'un utilisateur et/ou administrateur</h2>
+{% block body %}
+    <div class="container" style="margin-top: 120px; height: 100vh;">
+        <h2 class="font-weight-bold">Modification de l'option {{ option.name }}</h2>
         <div class="divider_title"></div>
 
         <div class="row">
@@ -14,7 +14,7 @@
                 {{ form_widget(form) }}
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info">Inscription</button>
+                    <button type="submit" class="btn btn-success">Modifier</button>
                 </div>
 
                 {{ form_end(form) }}
