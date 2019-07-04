@@ -19,55 +19,55 @@ class RegistrationType extends AbstractType
             ->add(
                 'firstName',
                 TextType::class, [
-                    'label' => "Prénom",
+                    'label' => false,
                     'attr' => [
-                        'placeholder' => "Votre Prénom"
+                        'placeholder' => "Prénom",
                     ]
                 ]
             )
             ->add(
                 'lastName',
                 TextType::class, [
-                    'label' => "Nom",
+                    'label' => false,
                     'attr' => [
-                        'placeholder' => "Votre Nom"
-                    ]
-                ]
-            )
-            ->add(
-                'avatar',
-                UrlType::class, [
-                    'label' => "Avatar",
-                    'required' => false,
-                    'attr' => [
-                        'placeholder' => "URL de votre avatar"
+                        'placeholder' => "Nom"
                     ]
                 ]
             )
             ->add(
                 'email',
                 EmailType::class, [
-                    'label' => "Email",
+                    'label' => false,
                     'attr' => [
-                        'placeholder' => "Votre Email"
+                        'placeholder' => "Email"
+                    ]
+                ]
+            )
+            ->add(
+                'avatar',
+                UrlType::class, [
+                    'label' => false,
+                    'required' => false,
+                    'attr' => [
+                        'placeholder' => "URL avatar"
                     ]
                 ]
             )
             ->add(
                 'password',
                 PasswordType::class, [
-                    'label' => "Mot de passe",
+                    'label' => false,
                     'attr' => [
-                        'placeholder' => "Votre mot de passe"
+                        'placeholder' => "Mot de passe"
                     ]
                 ]
             )
             ->add(
                 'passwordConfirm',
                 PasswordType::class, [
-                    'label' => "Confimation de mot de passe",
+                    'label' => false,
                     'attr' => [
-                        'placeholder' => "Confirmer votre mot de passe"
+                        'placeholder' => "Répéter le mot de passe"
                     ]
                 ]
             )

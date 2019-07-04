@@ -4,9 +4,6 @@
 
 {% block body %}
 
-    {# SECTION HEADER CONTACT #}
-    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': "Contact"} %}
-
     {# -------------IF ERROR FORM SEND---------------- #}
 
     {% if not form.vars.valid %}
@@ -17,7 +14,7 @@
         </div>
     {% endif %}
 
-    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;background-color: #fff;">
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;background-color: #fff;margin-top: 100px;">
         <div class="container">
             <h2 class="font-weight-bold">Demande de contact</h2>
             <div class="divider_title"></div>
@@ -38,36 +35,47 @@
                 </div>
             </section>
 
-            <div class="card shadow p-4" style="background-color: #f1f2f6;margin-bottom: 80px;">
 
-                {{ form_start(form) }}
+                <div class="form-content" style="border: 1px solid #ebebeb;">
 
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        {{ form_row(form.name) }}
+                    {{ form_start(form) }}
+
+                        <h2 class="form-title">Contactez-nous</h2>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+
+                            {{ form_row(form.name) }}
+
+                        </div>
+                        <div class="col-md-6">
+
+                            {{ form_row(form.email) }}
+
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        {{ form_row(form.email) }}
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            {{ form_row(form.message) }}
+
+                        </div>
+                        <div class="col-md-6">
+
+                            {{ form_row(form.phoneNumber) }}
+
+                        </div>
                     </div>
+
+                    <div class="form-group mt-3">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Envoyer votre message" />
+                    </div>
+
+                    {{ form_end(form) }}
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form_row(form.message) }}
-                    </div>
-                    <div class="col-md-6">
-                        {{ form_row(form.phoneNumber) }}
-                    </div>
-                </div>
-                <div class="row my-3">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary btn-sm">Envoyer votre message</button>
-                    </div>
-                </div>
 
-                {{ form_end(form) }}
-
-            </div>
 
             <section class="container-fluid contact description">
                 <div class="container">

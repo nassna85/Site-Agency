@@ -68,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException("L'email n'a pas été activé. Veillez à confirmer votre inscription en cliquant sur le lien de l'email que vous avez reçu lors de votre inscription !");
+            throw new CustomUserMessageAuthenticationException("L'email n'a pas été trouvé !");
         }
 
         return $user;

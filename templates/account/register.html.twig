@@ -4,9 +4,6 @@
 
 {% block body %}
 
-    {# SECTION HEADER #}
-    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title': 'Inscription'} %}
-
     {# IF TOKEN EXPIRED #}
     {% if app.request.query.get('tokenExpired') %}
         <div class="container">
@@ -16,35 +13,37 @@
         </div>
     {% endif %}
 
-    <div class="container">
+    {# FORM REGISTER #}
 
-        <section id="registration_form">
+    <div class="main-signup">
 
-            <h2 class="text-center font-weight-bold">Inscription</h2>
-            <div class="divider_center"></div>
+        <section class="signup">
 
-            {{ form_start(form) }}
+            <div class="container-form">
 
-            <div class="row align-items-center">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
-                    <div class="card shadow p-4">
-                        {{ form_row(form.firstName) }}
-                        {{ form_row(form.lastName) }}
-                        {{ form_row(form.email) }}
-                        {{ form_row(form.password) }}
-                        {{ form_row(form.passwordConfirm) }}
-                        {{ form_row(form.avatar) }}
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">S'inscrire</button>
+                <div class="form-content">
+
+                    {{ form_start(form) }}
+
+                        <h2 class="form-title">Créer un compte</h2>
+
+                        {{ form_widget(form) }}
+
+                        <div class="form-group mt-3">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Je m'inscris" />
                         </div>
-                    </div>
+
+                    {{ form_end(form) }}
+
+                    <p class="loginhere">
+                        Vous avez déjà un compte ? <br> <a href="{{ path('account_login') }}" class="loginhere-link">Connectez-vous</a>
+                    </p>
+
                 </div>
+
             </div>
 
-            {{ form_end(form) }}
         </section>
-
 
     </div>
 {% endblock %}

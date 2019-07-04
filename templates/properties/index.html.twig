@@ -12,22 +12,31 @@
 
             <div class="mb-5" style="background-color: #F5F5F5;padding: 20px;border-radius: 5px;">
                 <div class="row">
+
                     <div class="col-md-6">
+
                         {{ form_start(form) }}
+
                         {{ form_row(form.action) }}
                         {{ form_row(form.type) }}
                         {{ form_row(form.maxPrice) }}
+
                     </div>
+
                     <div class="col-md-6">
+
                         {{ form_row(form.minBedroom) }}
                         {{ form_row(form.minArea) }}
-                        <div class="form-group mt-5">
-                            <button class="btn btn-info float-right" type="submit">Rechercher</button>
-                        </div>
 
-                        {{ form_end(form) }}
                     </div>
+
                 </div>
+                <div class="form-group mt-5">
+                    <button class="form-submit" type="submit">Rechercher</button>
+                </div>
+
+                {{ form_end(form) }}
+
             </div>
 
             {% if app.request.get('properties_search') %}

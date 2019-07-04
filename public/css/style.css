@@ -1,4 +1,5 @@
 /**************************** GENERAL *******************************/
+
 body {
     background-color: #FFF !important;
     color: #282d32;
@@ -7,6 +8,23 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Source Sans Pro', sans-serif;
     color: #282d32;
+}
+@media screen and (max-width: 576px)
+{
+    h2 {
+        font-size: 1.5rem;
+    }
+    div.map iframe {
+        height: 350px;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+}
+@media screen and (min-width: 577px) and (max-width: 767px) {
+    h2 {
+        font-size: 2rem;
+    }
 }
 .divider_center {
     height: 3px;
@@ -44,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1rem;
     }
     #header_jumbotron div.jumbotron-fluid p.text-left {
-        bottom: -10px;
+        bottom: 2px;
         font-size: 0.8rem;
     }
     #header_jumbotron .btn {
@@ -69,19 +87,187 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 2rem;
     }
 }
+
+/**************** GENERAL : FORM **************************/
+
 label, legend {
     color: #282d32;
     font-weight: bold;
 }
 div#contact_for_property textarea {
-    border: 1px solid #bdc3c7;
-}
-.form-control {
-    border: 1px solid #bdc3c7;
+    border: 1px solid #ebebeb;
 }
 .form-error-icon {
     display: none;
 }
+/*
+input, textarea {
+    outline: none;
+    appearance: unset !important;
+    -moz-appearance: unset !important;
+    -webkit-appearance: unset !important;
+    -o-appearance: unset !important;
+    -ms-appearance: unset !important;
+}
+*/
+
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+}
+.form-content .form-title {
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
+    color: #282d32;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+@media screen and (max-width: 576px)
+{
+    .form-content .form-title {
+        font-size: 18px;
+    }
+    .form-control {
+        padding: 20px 25px !important;
+    }
+}
+.container-form {
+    width: 660px;
+    position: relative;
+    margin: 0 auto;
+}
+.form-content {
+    background: #fff;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    padding: 50px 85px;
+    margin-top: 50px;
+}
+
+.form-group {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.form-control, .form-control option {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 25px 30px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+}
+.form-control::-webkit-input-placeholder {
+    color: #999;
+}
+.form-control::-moz-placeholder {
+    color: #999;
+}
+.form-control:-ms-input-placeholder {
+    color: #999;
+}
+.form-control:-moz-placeholder {
+    color: #999;
+}
+.form-control::-webkit-input-placeholder {
+    font-weight: 500;
+}
+.form-control::-moz-placeholder {
+    font-weight: 500;
+}
+.form-control:-ms-input-placeholder {
+    font-weight: 500;
+}
+.form-control:-moz-placeholder {
+    font-weight: 500;
+}
+.form-control:focus {
+    border: 1px solid transparent;
+    -webkit-border-image-source: -webkit-linear-gradient(to right, #636366, #375a7f);
+    -moz-border-image-source: -moz-linear-gradient(to right, #636366, #375a7f);
+    -o-border-image-source: -o-linear-gradient(to right, #636366, #375a7f);
+    border-image-source: linear-gradient(to right, #636366, #375a7f);
+    -webkit-border-image-slice: 1;
+    border-image-slice: 1;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.form-control:focus::-webkit-input-placeholder {
+    color: #222;
+}
+.form-control:focus::-moz-placeholder {
+    color: #222;
+}
+.form-control:focus:-ms-input-placeholder {
+    color: #222;
+}
+.form-control:focus:-moz-placeholder {
+    color: #222;
+}
+
+.form-submit {
+    width: 100%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-image: -moz-linear-gradient(to left, #636366, #375a7f);
+    background-image: -ms-linear-gradient(to left, #636366, #375a7f);
+    background-image: -o-linear-gradient(to left, #636366, #375a7f);
+    background-image: -webkit-linear-gradient(to left, #636366, #375a7f);
+    background-image: linear-gradient(to left, #636366, #375a7f);
+}
+.loginhere {
+    color: #375a7f;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 91px;
+    margin-bottom: 5px;
+}
+
+.loginhere-link {
+    font-weight: 700;
+    color: #555;
+}
+.loginhere-link:hover {
+    text-decoration: none;
+    color: #375a7f;
+}
+
+/**************************** GENERAL : AVATAR *******************************/
+
 .avatar-mini {
     max-width: 24px;
     max-height: 24px;
@@ -169,7 +355,7 @@ nav.bg-dark {
 .navbar-dark .navbar-nav a.nav-link {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 15px;
     color: #fff;
     font-family: 'Source Sans Pro', sans-serif;
     -webkit-transition: all 0.3s ease-in-out;
@@ -192,12 +378,7 @@ nav img {
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
-
-/**************************** NAVBAR ADMIN *******************************/
-nav.bg-light {
-    background-color: #00bc8c !important;
-}
-.navbar-dark .navbar-nav a.nav-link {
+.navbar-dark .dropdown-item {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 13px;
@@ -208,7 +389,27 @@ nav.bg-light {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-.navbar-dark .navbar-nav a.nav-link:hover {
+.navbar-dark .dropdown-item:hover {
+    background-color: transparent;
+    color: #2980b9;
+}
+
+/**************************** NAVBAR ADMIN *******************************/
+nav.bg-light {
+    background-color: #00bc8c !important;
+}
+.navbar-light .navbar-nav a.nav-link {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.navbar-light .navbar-nav a.nav-link:hover {
     color: #2980b9 !important;
 }
 .navbar-brand {
@@ -223,15 +424,38 @@ nav img {
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
+.navbar-light .dropdown-item {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.navbar-light .dropdown-item:hover {
+    background-color: transparent;
+    color: #2980b9;
+}
 nav.bg-light .dropdown-menu {
     background-color: #00bc8c !important;
     border-color: #00bc8c;
+}
+@media screen and (max-width: 576px)
+{
+    .navbar-brand {
+        font-size: 15px;
+        font-weight: bold;
+    }
 }
 
 
 /********************************* HOMEPAGE *******************************/
 
 /*********homepage carousel main**********/
+
 header .carousel-item {
     height: 100vh;
     min-height: 350px;
@@ -273,6 +497,7 @@ header .carousel-indicators li {
     background-color: #375a7f;
 }
 /************homepage section about************/
+
 section#about {
     margin-top: 100px;
 }
@@ -303,6 +528,7 @@ section#about .about_description ul li i {
     font-size: 12px;
 }
 /************homepage section services*************/
+
 section#services {
     margin-top: 100px;
     background-color: #f1f2f6;
@@ -403,6 +629,7 @@ section#services {
 }
 
 /****************homepage section last properties**********/
+
 section#last_properties {
     margin-top: 100px;
 }
@@ -421,6 +648,7 @@ section#last_properties {
 }
 
 /*************homepage section testimony*******************/
+
 section#testimonials {
     background-color: #f1f2f6;
     padding: 30px;
@@ -546,6 +774,7 @@ section#testimonials .carousel-indicators li {
 }
 
 /********************************** ALL PROPERTIES SHOW *********************/
+
 section#all_properties_show {
     margin-top: 100px;
 }
@@ -614,47 +843,109 @@ section#all_properties_show .card {
 }
 
 /********************************** LOGIN FORM *****************************/
-section#login_form {
-    margin: 100px 0px;
+
+div.main-signin {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #282d32;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("../images/img-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-position: center center;
+    padding: 115px 0;
 }
-section#login_form input {
-    border: 1px solid #bdc3c7;
+
+@media screen and (max-width: 768px) {
+    div.main-signin {
+        background-image: none !important;
+        background: -moz-linear-gradient(to left, #636366, #375a7f);
+        background: -ms-linear-gradient(to left, #636366, #375a7f);
+        background: -o-linear-gradient(to left, #636366, #375a7f);
+        background: -webkit-linear-gradient(to left, #636366, #375a7f);
+        background: linear-gradient(to left, #636366, #375a7f) !important;
+    }
 }
 
 /****************************** LOGIN FORM ADMIN *************************/
+
 .title_login_admin {
     margin-top: 50px;
     margin-bottom: 50px;
     text-align: center;
 }
 
-/******************************* LOGIN REGISTRATION USER ****************************/
+/******************************* REGISTRATION FORM USER ****************************/
 
-#registration_form {
-    margin-bottom: 100px;
+div.main-signup {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #282d32;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("../images/img-registration.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-position: center center;
+    padding: 115px 0;
 }
-#registration_form input {
-    border: 1px solid #bdc3c7;
+@media screen and (max-width: 768px) {
+    div.main-signup {
+        background-image: none !important;
+        background: -moz-linear-gradient(to left, #636366, #375a7f);
+        background: -ms-linear-gradient(to left, #636366, #375a7f);
+        background: -o-linear-gradient(to left, #636366, #375a7f);
+        background: -webkit-linear-gradient(to left, #636366, #375a7f);
+        background: linear-gradient(to left, #636366, #375a7f) !important;
+    }
 }
 
-#registration_form .card {
-    border-radius: 0px;
+@media screen and (max-width: 768px) {
+    .container-form {
+        width: calc(100% - 40px);
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .form-content {
+        padding: 50px 25px;
+    }
 }
 
 /**********************************CREATE NEW PROPERTY **********************/
 
-#new_properties_form input, #new_properties_form textarea {
-    border: 1px solid #bdc3c7;
-}
+
 #new_properties_form {
     margin-bottom: 100px;
+}
+@media screen and (max-width: 576px)
+{
+    #new_properties_form h2 {
+        font-size: 1.5rem;
+    }
+    #new_properties_form .card {
+        padding: 18px !important;
+    }
+}
+@media screen and (min-width: 577px) and (max-width: 767px)
+{
+    #new_properties_form h2 {
+        font-size: 2rem;
+    }
 }
 
 /********************************** EDIT PROPERTY **************************/
 
-#edit_property_form input, #edit_property_form textarea {
-    border: 1px solid #bdc3c7;
-}
+
 #edit_property_form {
     margin-bottom: 100px;
 }
@@ -674,7 +965,6 @@ section#profile div.jumbotron-fluid {
 section#profile textarea {
     border-color: #bdc3c7;
 }
-
 @media screen and (max-width: 992px)
 {
     section#profile .description_profile {
@@ -691,12 +981,20 @@ section#edit_profile input {
     .btn_edit_profil_user {
         margin-bottom: 10px;
     }
+    section#edit_profile div.card {
+        padding: 18px !important;
+    }
 }
 
 /********************************** EDIT PASSWORD USER *********************/
 
 section#password_edit input {
     border-color: #bdc3c7;
+}
+@media screen and (max-width: 576px) {
+    section#password_edit div.card {
+        padding: 18px !important;
+    }
 }
 
 /********************************** CONTACT *******************************/
