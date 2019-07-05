@@ -1,48 +1,82 @@
-<div class="col-sm-12 col-md-6 col-lg-4">
+<div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
     <div class="card shadow mb-5">
-        <a href="#">
-            <img src="{{ property.coverImage | default('http://placehold.it/') }}" class="card-img-top" alt="..." style="height:200px;width:100%;display:block;">
+        <a href="{{ path('properties_show', {'id':property.id}) }}">
+            <img src="{{ property.coverImage | default('http://placehold.it/') }}" class="card-img-top" alt="..." style="height:250px;width:100%;display:block;">
         </a>
-
         {% if(property.sold == 1) %}
 
             <span class="badge badge-danger">
 
-                        {% if(property.action == 'vendre') %}
+                {% if(property.action == 'vendre') %}
 
-                            Vendu
+                    Vendu
 
-                        {% else %}
+                {% else %}
 
-                            Loué
+                    Loué
 
-                        {% endif %}
+                {% endif %}
 
-                    </span>
+            </span>
 
         {% endif %}
 
+        <a href="{{ path('property_like', {'id':property.id}) }}" class="btn btn-link js-like">
+
+            {% if app.user and property.isLikedByUser(app.user) %}
+
+                <i class="fas fa-heart"></i>
+
+            {% else %}
+
+                <i class="far fa-heart"></i>
+
+            {% endif %}
+        </a>
+
         <div class="card-body">
-            <a href="#">
-                <h3 class="h5">{{ property.type }} à {{ property.action }}</h3>
-            </a>
-            <h4 class="h6">{{ property.postalCode }} - {{ property.city }}</h4><br/>
-            <h3 class="h5">Prix : <span class="color_price">{{ property.price }} €</span></h3><br>
-            <ul class="description_properties">
-                <li>
-                    <i class="fas fa-ruler"></i>
-                    {{ property.area }} m <sup>2</sup>
-                </li>
-                <li>
-                    <i class="fas fa-bed"></i>
-                    {{ property.bedrooms }} chambres
-                </li>
-                <li>
-                    <i class="fas fa-bath"></i>
-                    {{ property.shower }} douche
-                </li>
-            </ul>
-            <a href="{{ path('properties_show', {'id':property.id}) }}" class="btn btn-primary btn-sm">Voir cette offre</a>
+            <div class="property-card-title text-center">
+                <a href="{{ path('properties_show', {'id':property.id}) }}">
+                    <h3 class="h5">{{ property.type }} à {{ property.action }}</h3>
+                </a>
+                <h4 class="h6">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ property.postalCode }} - {{ property.city }}
+                </h4>
+            </div>
+
+            <div class="room-info-warp">
+                <div class="room-info">
+                    <div class="rf-left">
+                        <p>
+                            <i class="fas fa-ruler"></i>
+                            {{ property.area }} m <sup>2</sup>
+                        </p>
+                        <p>
+                            <i class="fas fa-bed"></i>
+                            {{ property.bedrooms }} chambres
+                        </p>
+                    </div>
+                    <div class="rf-right">
+                        <p>
+                            <i class="fas fa-bath"></i>
+                            {{ property.shower }} douche
+                        </p>
+                        <p>
+                            <i class="fas fa-home"></i>
+                            {{ property.type }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="card-footer text-center" style="padding: 15px;margin:-20px;background: #375a7f;">
+                <a href="{{ path('properties_show', {'id':property.id}) }}">
+                    <h3 class="h4 text-white">{{ property.price | number_format(2, ',', ' ') }} €</h3>
+                </a>
+            </div>
         </div>
     </div>
 </div>

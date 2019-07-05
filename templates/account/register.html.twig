@@ -16,34 +16,26 @@
     {# FORM REGISTER #}
 
     <div class="main-signup">
+        <div class="container-form">
+            <div class="form-content">
 
-        <section class="signup">
+                {{ form_start(form) }}
 
-            <div class="container-form">
+                    <h2 class="form-title">Créer un compte</h2>
 
-                <div class="form-content">
+                    {{ form_widget(form) }}
 
-                    {{ form_start(form) }}
+                    <div class="form-group mt-3">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Je m'inscris" />
+                    </div>
 
-                        <h2 class="form-title">Créer un compte</h2>
+                {{ form_end(form) }}
 
-                        {{ form_widget(form) }}
-
-                        <div class="form-group mt-3">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Je m'inscris" />
-                        </div>
-
-                    {{ form_end(form) }}
-
-                    <p class="loginhere">
-                        Vous avez déjà un compte ? <br> <a href="{{ path('account_login') }}" class="loginhere-link">Connectez-vous</a>
-                    </p>
-
-                </div>
+                <p class="loginhere">
+                    Vous avez déjà un compte ? <br> <a href="{{ path('account_login') }}" class="loginhere-link">Connectez-vous</a>
+                </p>
 
             </div>
-
-        </section>
-
+        </div>
     </div>
 {% endblock %}

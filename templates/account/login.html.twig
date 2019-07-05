@@ -5,6 +5,7 @@
 {% block body %}
 
     {# CONFIRMATION IF TOKEN VALID #}
+
     {% if app.request.query.get('validationSuccess') %}
         <div class="container">
             <div class="alert alert-success">
@@ -16,40 +17,35 @@
     {# SECTION FORM LOGIN #}
 
     <div class="main-signin">
+        <div class="container-form">
+            <div class="form-content">
 
-        <section class="signup">
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
 
-            <div class="container-form">
+                <form method="post">
+                    <h2 class="form-title">Connectez-vous...</h2>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required>
+                    <br>
 
-                <div class="form-content">
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
-                    {% if error %}
-                        <div class="alert alert-danger">
-                            {{ error.messageKey|trans(error.messageData, 'security') }}
-                        </div>
-                    {% endif %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <br>
 
-                    <form method="post">
-                        <h2 class="form-title">Connectez-vous...</h2>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-                        <br>
+                    <div class="form-group mt-3">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Je me connecte" />
+                    </div>
+                </form>
 
-                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                <p class="loginhere">
+                    Vous n'avez pas encore de compte ? <br> <a href="{{ path('account_registration') }}" class="loginhere-link">Inscrivez-vous</a>
+                </p>
 
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                        <br>
-
-                        <div class="form-group mt-3">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Je me connecte" />
-                        </div>
-                    </form>
-
-                    <p class="loginhere">
-                        Vous n'avez pas encore de compte ? <br> <a href="{{ path('account_registration') }}" class="loginhere-link">Inscrivez-vous</a>
-                    </p>
-
-                </div>
             </div>
-        </section>
+        </div>
     </div>
 {% endblock %}

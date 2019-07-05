@@ -94,9 +94,7 @@ label, legend {
     color: #282d32;
     font-weight: bold;
 }
-div#contact_for_property textarea {
-    border: 1px solid #ebebeb;
-}
+
 .form-error-icon {
     display: none;
 }
@@ -111,7 +109,7 @@ input, textarea {
 }
 */
 
-
+/*
 input:focus, select:focus, textarea:focus {
     outline: none;
     box-shadow: none !important;
@@ -120,6 +118,7 @@ input:focus, select:focus, textarea:focus {
     -o-box-shadow: none !important;
     -ms-box-shadow: none !important;
 }
+*/
 .form-content .form-title {
     line-height: 1.66;
     margin: 0;
@@ -202,12 +201,14 @@ input:focus, select:focus, textarea:focus {
 }
 .form-control:focus {
     border: 1px solid transparent;
+    /*
     -webkit-border-image-source: -webkit-linear-gradient(to right, #636366, #375a7f);
     -moz-border-image-source: -moz-linear-gradient(to right, #636366, #375a7f);
     -o-border-image-source: -o-linear-gradient(to right, #636366, #375a7f);
     border-image-source: linear-gradient(to right, #636366, #375a7f);
     -webkit-border-image-slice: 1;
     border-image-slice: 1;
+    */
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -286,31 +287,43 @@ input:focus, select:focus, textarea:focus {
     border-radius: 50%;
 }
 
-/*****************************CARD PROPERTY ***********************/
+/********************************* GENERAL : CARD PROPERTY*******************************/
 
-ul.description_properties {
-    display: flex;
-    padding-left: 2px;
+.property-card-title h3 {
+    font-weight: bold;
+    color: #707070;
+    font-family: 'Montserrat', sans-serif;
 }
-
-ul.description_properties li {
-    list-style: none;
-    font-size: 10px;
+.property-card-title h4 {
+    color: #707070;
+}
+.property-card-title h4 i {
+    color: #375a7f;
+}
+.room-info-warp {
+    padding: 25px;
+    padding-bottom: 0;
+}
+.room-info {
+    border-top: 1px solid #ebebeb;
+    padding-top: 15px;
+    overflow: hidden;
+}
+.room-info .rf-left {
+    float: left;
+}
+.room-info p {
+    margin-bottom: 15px;
+    font-size: 13.9px;
+    color: #707070;
+}
+.room-info p i {
+    color: #375a7f;
     margin-right: 10px;
-
 }
-
-@media screen and (max-width: 567px) {
-    ul.description_properties li {
-        margin-right: 10px;
-        font-size: 9px;
-    }
+.room-info .rf-right {
+    float: right;
 }
-
-.description_properties i {
-    color: #7f8c8d;
-}
-
 .last_properties .card-body {
     background-color: #f1f2f6;
 }
@@ -325,27 +338,34 @@ ul.description_properties li {
 }
 
 .card-body a h3.h5:hover{
-    color: #C42D29;
+    color: #375a7f;
 }
 
 .last_properties .card-body h4 {
     color: #95a5a6;
 }
 
-.color_price {
-    color: #282d32;
-    font-weight: bold;
-}
-
 .card-img-top {
     position: relative;
 }
 
-.badge.badge-danger {
+div.card .badge.badge-danger {
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #C42D29;
+    padding: 11px 15px;
+    border-radius: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    background: #e94646;
+    font-weight: normal !important;
+}
+div.card .fa-heart {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 30px;
+    color: #365a7f;
 }
 
 /**************************** NAVBAR *******************************/
@@ -797,9 +817,6 @@ section#all_properties_show .card {
 
 /******************************* SHOW ONE PROPERTY ***************************/
 
-#contact_for_property .form-control:focus {
-    border-color: grey;
-}
 
 #contact_for_property label {
     color: #282d32;
@@ -921,26 +938,21 @@ div.main-signup {
     }
 }
 
-/**********************************CREATE NEW PROPERTY **********************/
+/********************************** CREATE NEW PROPERTY **********************/
 
-
-#new_properties_form {
-    margin-bottom: 100px;
-}
-@media screen and (max-width: 576px)
-{
-    #new_properties_form h2 {
-        font-size: 1.5rem;
-    }
-    #new_properties_form .card {
-        padding: 18px !important;
-    }
-}
-@media screen and (min-width: 577px) and (max-width: 767px)
-{
-    #new_properties_form h2 {
-        font-size: 2rem;
-    }
+div.main-add-property {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #282d32;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: none !important;
+    background: -moz-linear-gradient(to left, #636366, #375a7f);
+    background: -ms-linear-gradient(to left, #636366, #375a7f);
+    background: -o-linear-gradient(to left, #636366, #375a7f);
+    background: -webkit-linear-gradient(to left, #636366, #375a7f);
+    background: linear-gradient(to left, #636366, #375a7f) !important;
+    padding: 115px 0;
 }
 
 /********************************** EDIT PROPERTY **************************/
@@ -952,49 +964,74 @@ div.main-signup {
 
 /******************************* PROFILE USER ****************************/
 
-section#profile {
-    margin-top: 92px;
+section#profile-user {
+    margin: 150px 0px;
 }
-
-section#profile i {
+section#profile-user h5 {
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
     color: #282d32;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
 }
-section#profile div.jumbotron-fluid {
-    background-color: #F5F5F5;
-}
-section#profile textarea {
-    border-color: #bdc3c7;
+.btn_edit_profil_user {
+    margin-bottom: 10px;
 }
 @media screen and (max-width: 992px)
 {
-    section#profile .description_profile {
+    section#profile-user .description_profile {
         text-align: center;
         margin-top: 30px;
     }
 }
 
 /********************************* EDIT PROFILE USER ******************/
-section#edit_profile input {
-    border-color: #bdc3c7;
+
+section#edit-profile-user {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #282d32;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("../images/img-edit-profile-user.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-position: center center;
+    padding: 115px 0;
 }
-@media screen and (max-width: 576px) {
-    .btn_edit_profil_user {
-        margin-bottom: 10px;
-    }
-    section#edit_profile div.card {
-        padding: 18px !important;
+@media screen and (max-width: 768px) {
+    section#edit-profile-user {
+        background-image: none !important;
+        background: -moz-linear-gradient(to left, #636366, #375a7f);
+        background: -ms-linear-gradient(to left, #636366, #375a7f);
+        background: -o-linear-gradient(to left, #636366, #375a7f);
+        background: -webkit-linear-gradient(to left, #636366, #375a7f);
+        background: linear-gradient(to left, #636366, #375a7f) !important;
     }
 }
 
 /********************************** EDIT PASSWORD USER *********************/
 
-section#password_edit input {
-    border-color: #bdc3c7;
-}
-@media screen and (max-width: 576px) {
-    section#password_edit div.card {
-        padding: 18px !important;
-    }
+section#edit-password-user {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #282d32;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    background-image: none !important;
+    background: -moz-linear-gradient(to left, #636366, #375a7f);
+    background: -ms-linear-gradient(to left, #636366, #375a7f);
+    background: -o-linear-gradient(to left, #636366, #375a7f);
+    background: -webkit-linear-gradient(to left, #636366, #375a7f);
+    background: linear-gradient(to left, #636366, #375a7f) !important;
+    padding: 115px 0;
 }
 
 /********************************** CONTACT *******************************/

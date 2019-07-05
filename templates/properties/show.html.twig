@@ -4,175 +4,178 @@
 
 {% block body %}
 
-     {% if property.approved == 1 %}
 
-        {# -------------IF ERROR FORM SEND---------------- #}
+    {% if property.approved == 1 %}
 
-        {% if not form.vars.valid %}
-            <div class="container" style="margin-top: 100px;">
-                <div class="alert alert-danger">
-                    Erreur lors de l'envoie de votre message. Vérifier vos champs et rééssayez à nouveau.
-                </div>
-            </div>
-        {% endif %}
+            {# -------------IF ERROR FORM SEND---------------- #}
 
-        <div class="container mt-4">
-            <a href="{{ path('properties_index') }}" class="btn btn-link btn-sm" style="color: #2980b9;text-decoration: none;margin-top: 80px;">
-                <i class="fas fa-arrow-left"></i>
-                Retour à la liste des biens
-            </a>
-
-            <div class="title_show_property mb-5" style="border-left: 3px solid #2980b9;">
-                <h2 class="mt-5 font-weight-bold pl-2">Bien n° {{ property.id }}</h2>
-                <span class="pl-2">{{ property.address }}</span> <br>
-                <span class="pl-2">{{ property.postalCode }} - {{ property.city }}</span><br><br>
-                <span class="pl-2">
-                    {% if(property.sold == 1) %}
-
-                        {% if(property.action == 'vendre') %}
-
-                            Ce bien a été <strong>vendu</strong>
-
-                        {% else %}
-
-                            Ce bien a été <strong>loué</strong>
-
-                        {% endif %}
-
-                    {% endif %}
-                </span>
-            </div>
+       {% if not form.vars.valid %}
+           <div class="container" style="margin-top: 100px;">
+               <div class="alert alert-danger">
+                   Erreur lors de l'envoie de votre message. Vérifier vos champs et rééssayez à nouveau.
+               </div>
+           </div>
+       {% endif %}
 
 
-            {% if app.user and app.user == property.author %}
+       <div class="container mt-4">
+           <a href="{{ path('properties_index') }}" class="btn btn-link btn-sm" style="color: #2980b9;text-decoration: none;margin-top: 80px;">
+               <i class="fas fa-arrow-left"></i>
+               Retour à la liste des biens
+           </a>
 
-                <a href="{{ path('properties_edit', {'id': property.id}) }}" class="btn btn-primary btn-sm btn-edit-property">Modifier votre annonce</a>&nbsp;
-                <a href="{{ path('properties_delete', {'id': property.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')">Supprimer votre annonce</a>
+           <div class="title_show_property mb-5" style="border-left: 3px solid #2980b9;">
+               <h2 class="mt-5 font-weight-bold pl-2">Bien n° {{ property.id }}</h2>
+               <span class="pl-2">{{ property.address }}</span> <br>
+               <span class="pl-2">{{ property.postalCode }} - {{ property.city }}</span><br><br>
+               <span class="pl-2">
+                   {% if(property.sold == 1) %}
 
-            {% endif %}
+                       {% if(property.action == 'vendre') %}
+
+                           Ce bien a été <strong>vendu</strong>
+
+                       {% else %}
+
+                           Ce bien a été <strong>loué</strong>
+
+                       {% endif %}
+
+                   {% endif %}
+               </span>
+           </div>
 
 
-            <div id="carouselShowProperty" class="carousel slide my-5" data-ride="carousel">
-                <ol class="carousel-indicators">
+           {% if app.user and app.user == property.author %}
 
-                    {% for image in property.images %}
+               <a href="{{ path('properties_edit', {'id': property.id}) }}" class="btn btn-primary btn-sm btn-edit-property">Modifier votre annonce</a>&nbsp;
+               <a href="{{ path('properties_delete', {'id': property.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')">Supprimer votre annonce</a>
 
-                        <li data-target="#carouselShowProperty" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
+           {% endif %}
 
-                    {% endfor %}
 
-                </ol>
+           <div id="carouselShowProperty" class="carousel slide my-5" data-ride="carousel">
+               <ol class="carousel-indicators">
 
-                <div class="carousel-inner">
+                   {% for image in property.images %}
 
-                    {% for image in property.images %}
+                       <li data-target="#carouselShowProperty" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
 
-                        <div class="carousel-item {% if loop.first %}active{% endif %}">
-                            <img src="{{ image.path | default('http://placehold.it/') }}" class="d-block w-100" alt="...">
-                        </div>
+                   {% endfor %}
 
-                    {% endfor %}
+               </ol>
 
-                </div>
+               <div class="carousel-inner">
 
-                <a class="carousel-control-prev" href="#carouselShowProperty" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselShowProperty" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+                   {% for image in property.images %}
 
-            <h1>{{ property.price }} €</h1>
+                       <div class="carousel-item {% if loop.first %}active{% endif %}">
+                           <img src="{{ image.path | default('http://placehold.it/') }}" class="d-block w-100" alt="...">
+                       </div>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="mt-5 font-weight-bold">Résumé</h3>
-                    <div class="divider_title"></div>
+                   {% endfor %}
 
-                    <dl class="row">
-                        <dt class="col-md-4">Lieu</dt>
-                        <dd class="col-md-8">{{ property.address }}</dd>
-                        <dt class="col-md-4">Type</dt>
-                        <dd class="col-md-8">{{ property.type }}</dd>
-                        <dt class="col-md-4">Status</dt>
-                        <dd class="col-md-8">A {{ property.action }}</dd>
-                        <dt class="col-md-4">Surface</dt>
-                        <dd class="col-md-8">{{ property.area }} m2</dd>
-                        <dt class="col-md-4">Chambres</dt>
-                        <dd class="col-md-8">{{ property.bedrooms }}</dd>
-                        <dt class="col-md-4">Douche</dt>
-                        <dd class="col-md-8">{{ property.shower }}</dd>
-                        <dt class="col-md-4">Insérée le</dt>
-                        <dd class="col-md-8">{{ property.createdAt | date('d/m/Y') }}</dd>
-                    </dl>
+               </div>
 
-                    {% if property.options | length > 0 %}
+               <a class="carousel-control-prev" href="#carouselShowProperty" role="button" data-slide="prev">
+                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                   <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#carouselShowProperty" role="button" data-slide="next">
+                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                   <span class="sr-only">Next</span>
+               </a>
+           </div>
 
-                        <h3 class="mt-5 font-weight-bold">Les options supplémentaires</h3>
-                        <div class="divider_title"></div>
+           <h1>{{ property.price }} €</h1>
 
-                        <div class="row">
+           <div class="row">
+               <div class="col-lg-6">
+                   <h3 class="mt-5 font-weight-bold">Résumé</h3>
+                   <div class="divider_title"></div>
 
-                            {% for option in property.options %}
+                   <dl class="row">
+                       <dt class="col-md-4">Lieu</dt>
+                       <dd class="col-md-8">{{ property.address }}</dd>
+                       <dt class="col-md-4">Type</dt>
+                       <dd class="col-md-8">{{ property.type }}</dd>
+                       <dt class="col-md-4">Status</dt>
+                       <dd class="col-md-8">A {{ property.action }}</dd>
+                       <dt class="col-md-4">Surface</dt>
+                       <dd class="col-md-8">{{ property.area }} m2</dd>
+                       <dt class="col-md-4">Chambres</dt>
+                       <dd class="col-md-8">{{ property.bedrooms }}</dd>
+                       <dt class="col-md-4">Douche</dt>
+                       <dd class="col-md-8">{{ property.shower }}</dd>
+                       <dt class="col-md-4">Insérée le</dt>
+                       <dd class="col-md-8">{{ property.createdAt | date('d/m/Y') }}</dd>
+                   </dl>
 
-                                <dt class="col-md-4">{{ option.name }}</dt>
-                                <dd class="col-md-8">Oui</dd>
+                   {% if property.options | length > 0 %}
 
-                            {% endfor %}
+                       <h3 class="mt-5 font-weight-bold">Les options supplémentaires</h3>
+                       <div class="divider_title"></div>
 
-                        </div>
+                       <div class="row">
 
-                    {% endif %}
+                           {% for option in property.options %}
 
-                </div>
+                               <dt class="col-md-4">{{ option.name }}</dt>
+                               <dd class="col-md-8">Oui</dd>
 
-                <div class="col">
-                    <h3 class="mt-5 font-weight-bold">Description</h3>
-                    <div class="divider_title"></div>
-                    {{ property.description | raw | nl2br }}
-                </div>
-            </div>
+                           {% endfor %}
 
-            <h3 class="mt-5 font-weight-bold">Contacter l'agence</h3>
-            <div class="divider_title"></div>
+                       </div>
 
-            {% if app.user %}
+                   {% endif %}
 
-                <div class="row mb-5">
-                    <div class="col-md-6">
-                        {{ form_start(form) }}
+               </div>
 
-                        {{ form_widget(form) }}
+               <div class="col">
+                   <h3 class="mt-5 font-weight-bold">Description</h3>
+                   <div class="divider_title"></div>
+                   {{ property.description | raw | nl2br }}
+               </div>
+           </div>
 
-                        <div class="form-group mt-3">
-                            <button id="btn_send_contactForProperty" type="submit" class="btn btn-primary">Envoyer</button>
-                        </div>
+           <h3 class="mt-5 font-weight-bold">Contacter l'agence</h3>
+           <div class="divider_title"></div>
 
-                        {{ form_end(form) }}
-                    </div>
-                </div>
+           {% if app.user %}
 
-            {% else %}
+               <div class="row mb-5">
+                   <div class="col-md-6">
+                       {{ form_start(form) }}
 
-                <div class="alert alert-warning">
-                    Veuillez vous <a href="{{ path('account_login') }}">connecter</a> pour envoyer votre message !
-                </div>
+                       {{ form_widget(form) }}
 
-            {% endif %}
+                       <div class="form-group mt-3">
+                           <button id="btn_send_contactForProperty" type="submit" class="btn btn-primary">Envoyer</button>
+                       </div>
 
-        </div>
+                       {{ form_end(form) }}
+                   </div>
+               </div>
+
+           {% else %}
+
+               <div class="alert alert-warning">
+                   Veuillez vous <a href="{{ path('account_login') }}">connecter</a> pour envoyer votre message !
+               </div>
+
+           {% endif %}
+
+       </div>
+
 
     {% else %}
-        <div class="jumbotron jumbotron-fluid" style="height: 100vh;background-color: #fff;">
-            <div class="container" style="margin-top: 100px;">
-                <div class="alert alert-info" style="margin: 0 auto;">
-                    Votre bien n'a pas encore été confirmé par l'administration. Un peu de patience...
-                </div>
-            </div>
-        </div>
+       <div class="jumbotron jumbotron-fluid" style="height: 100vh;background-color: #fff;">
+           <div class="container" style="margin-top: 100px;">
+               <div class="alert alert-info" style="margin: 0 auto;">
+                   Votre bien n'a pas encore été confirmé par l'administration. Un peu de patience...
+               </div>
+           </div>
+       </div>
 
     {% endif %}
 

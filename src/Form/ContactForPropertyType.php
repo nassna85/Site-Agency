@@ -16,7 +16,7 @@ class ContactForPropertyType extends AbstractType
             ->add(
                 'message',
                 TextareaType::class, [
-                    'label' => "Votre message",
+                    'label' => false,
                     'attr' => [
                         'placeholder' => "Indiquer votre message"
                     ]

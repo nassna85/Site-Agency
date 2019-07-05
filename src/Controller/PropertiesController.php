@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\ContactForProperty;
 use App\Entity\Properties;
 use App\Entity\PropertiesSearch;
+use App\Entity\PropertyLike;
 use App\Form\ContactForPropertyType;
 use App\Form\PropertiesSearchType;
 use App\Form\PropertiesType;
 use App\Repository\PropertiesRepository;
+use App\Repository\PropertyLikeRepository;
 use App\Services\ContactNotification;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -230,7 +232,7 @@ class PropertiesController extends AbstractController
 
     /**
      * Delete Property
-     * @Route("property/{id}/delete", name="properties_delete")
+     * @Route("/property/{id}/delete", name="properties_delete")
      * @Security("is_granted('ROLE_USER') and user === property.getAuthor()", message="Cette annonce ne vous appartient pas. Pas possible de la supprimer !")
      * @param $property
      * @param $manager
@@ -247,5 +249,62 @@ class PropertiesController extends AbstractController
         );
 
         return $this->redirectToRoute('properties_index');
+    }
+
+    /**
+     * For to like or no a property
+     * @Route("/property/{id}/like", name="property_like")
+     * @param Properties $property
+     * @param ObjectManager $manager
+     * @param PropertyLikeRepository $likeRepo
+     * @return Response
+     */
+    public function like(Properties $property, ObjectManager $manager, PropertyLikeRepository $likeRepo)
+    {
+        $user = $this->getUser();
+
+        //If user no connected
+
+        if(!$user)
+        {
+            return $this->json([
+               'code' => 403,
+               'message' => "Pas autorisé"
+            ], 403);
+        }
+
+        //If user like already this property => Remove like
+
+        if($property->isLikedByUser($user))
+        {
+            $like = $likeRepo->findOneBy([
+               'property' => $property,
+                'user' => $user
+            ]);
+
+            $manager->remove($like);
+            $manager->flush();
+
+            return $this->json([
+                'code' => 200,
+                'message' => 'Like remove',
+                'likes' => $likeRepo->count(['property'=> $property])
+            ], 200);
+        }
+
+        //If User will like this property => add Like
+
+        $like = new PropertyLike();
+        $like->setProperty($property)
+             ->setUser($user);
+
+        $manager->persist($like);
+        $manager->flush();
+
+        return $this->json([
+            'code'=> 200,
+            'message'=> "Like add",
+            'likes' => $likeRepo->count(['property'=>$property])
+        ], 200);
     }
 }

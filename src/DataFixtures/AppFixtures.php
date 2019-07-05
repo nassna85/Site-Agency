@@ -6,6 +6,7 @@ use App\Entity\Comments;
 use App\Entity\ContactForProperty;
 use App\Entity\Image;
 use App\Entity\Properties;
+use App\Entity\PropertyLike;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -94,6 +95,15 @@ class AppFixtures extends Fixture
             }
 
             $manager->persist($properties);
+
+            for($j = 0; $j < mt_rand(0, 10); $j++)
+            {
+                $like = new PropertyLike();
+                $like->setProperty($properties)
+                     ->setUser($faker->randomElement($users));
+
+                $manager->persist($like);
+            }
         }
 
         for($i = 0; $i < 10; $i++)

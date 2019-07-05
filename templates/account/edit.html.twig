@@ -3,31 +3,25 @@
 {% block title %}Modification du profil de {{ user.fullName }}{% endblock %}
 
 {% block body %}
-    {# SECTION HEADER EDIT PROFILE #}
-    {% include 'partials/_header_jumbotron.html.twig' with {'sub_title':"Modifier votre profil"} %}
+    {# SECTION EDIT PROFILE #}
 
-    <section id="edit_profile">
-        <div class="container">
-            <h2 class="text-left">Modification du profil de <em>{{ user.fullName }}</em></h2>
-            <div class="divider_title"></div>
+    <section id="edit-profile-user">
+        <div class="container-form">
+            <div class="form-content">
 
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <img src="{{ user.avatar }}" alt="Avatar de {{ user.fullName }}" class="avatar-medium">
+                {{ form_start(form) }}
+
+                <h2 class="form-title">Un changement {{ user.firstName }} ?</h2>
+
+                {{ form_widget(form) }}
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Modifier mon profil</button>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card shadow p-5 my-5">
-                        {{ form_start(form) }}
 
-                        {{ form_widget(form) }}
+                {{ form_end(form) }}
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Modifier mon profil</button>
-                        </div>
 
-                        {{ form_end(form) }}
-                    </div>
-                </div>
             </div>
         </div>
     </section>
