@@ -23,10 +23,26 @@
 
                     <h2 class="form-title">Créer un compte</h2>
 
-                    {{ form_widget(form) }}
+                    <span class="errorFirstName errorMessage"></span>
+                    {{ form_row(form.firstName) }}
+
+                    <span class="errorLastName errorMessage"></span>
+                    {{ form_row(form.lastName) }}
+
+                    <span class="errorAvatar errorMessage"></span>
+                    {{ form_row(form.avatar) }}
+
+                    <span class="errorEmail errorMessage"></span>
+                    {{ form_row(form.email) }}
+
+                    <span class="errorPassword errorMessage"></span>
+                    {{ form_row(form.password) }}
+
+                    <span class="errorPasswordConfirm errorMessage"></span>
+                    {{ form_row(form.passwordConfirm) }}
 
                     <div class="form-group mt-3">
-                        <input type="submit" name="submit" id="submit" class="form-submit" value="Je m'inscris" />
+                        <input type="submit" name="submit" id="btn-register-user" class="form-submit" value="Je m'inscris" />
                     </div>
 
                 {{ form_end(form) }}
@@ -38,4 +54,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/userRegistration.js"></script>
 {% endblock %}

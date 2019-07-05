@@ -200,15 +200,8 @@ input:focus, select:focus, textarea:focus {
     font-weight: 500;
 }
 .form-control:focus {
-    border: 1px solid transparent;
-    /*
-    -webkit-border-image-source: -webkit-linear-gradient(to right, #636366, #375a7f);
-    -moz-border-image-source: -moz-linear-gradient(to right, #636366, #375a7f);
-    -o-border-image-source: -o-linear-gradient(to right, #636366, #375a7f);
-    border-image-source: linear-gradient(to right, #636366, #375a7f);
-    -webkit-border-image-slice: 1;
-    border-image-slice: 1;
-    */
+    border: 1px solid #CDD2D0;
+    box-shadow: none;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -217,6 +210,7 @@ input:focus, select:focus, textarea:focus {
     background-origin: border-box;
     background-clip: content-box, border-box;
 }
+
 .form-control:focus::-webkit-input-placeholder {
     color: #222;
 }
@@ -265,6 +259,10 @@ input:focus, select:focus, textarea:focus {
 .loginhere-link:hover {
     text-decoration: none;
     color: #375a7f;
+}
+.errorMessage {
+    color: #C82829;
+    font-weight: normal;
 }
 
 /**************************** GENERAL : AVATAR *******************************/
@@ -365,7 +363,10 @@ div.card .fa-heart {
     top: 5px;
     left: 5px;
     font-size: 30px;
-    color: #365a7f;
+    color: rgba(57, 90, 127, 0.7);
+    padding: 5px;
+    background-color: rgba(88, 91, 91, .7);
+    border-radius: 50%;
 }
 
 /**************************** NAVBAR *******************************/
@@ -1077,7 +1078,31 @@ section.contact.description address, section.contact.description p {
 
 section.page_error_404 .jumbotron {
     height: 100vh;
-    margin-bottom: 0px;
+    margin-top: 150px;
+    background-color:#fff;
+}
+
+section.page_error_404 h1 {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width:576px)
+{
+    section.page_error_404 h1 {
+        font-size: 1.5rem;
+    }
+    section.page_error_404 p {
+        font-size: 0.7rem;
+    }
+}
+@media screen and (min-width:577px) and (max-width:992px)
+{
+    section.page_error_404 h1 {
+        font-size: 2rem;
+    }
+    section.page_error_404 p {
+        font-size: 0.9rem;
+    }
 }
 
 /********************************** FOOTER **********************************/

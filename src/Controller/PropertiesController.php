@@ -61,6 +61,7 @@ class PropertiesController extends AbstractController
             }
 
             $properties = $repo->PropertiesSearchByCriteria($action, $type, $maxPrice, $minBedroom, $minArea);
+
         }
         return $this->render('properties/index.html.twig', [
             'properties' => $properties,

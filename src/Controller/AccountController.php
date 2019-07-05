@@ -2,25 +2,27 @@
 
 namespace App\Controller;
 
-use App\Entity\Comments;
-use App\Entity\PasswordEdit;
-use App\Entity\Token;
 use App\Entity\User;
+use App\Entity\Token;
+use App\Entity\Comments;
 use App\Form\AccountType;
 use App\Form\CommentType;
+use App\Entity\Properties;
+use App\Entity\PasswordEdit;
 use App\Form\PasswordEditType;
 use App\Form\RegistrationType;
 use App\Services\TokenSendler;
+use Symfony\Component\Form\FormError;
+use App\Repository\PropertiesRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormError;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AccountController extends AbstractController
 {
@@ -142,7 +144,7 @@ class AccountController extends AbstractController
      * @param ObjectManager $manager
      * @return Response
      */
-    public function myAccount(Request $request, ObjectManager $manager)
+    public function myAccount(Request $request, ObjectManager $manager, PropertiesRepository $repo)
     {
         $comment = new Comments();
 
@@ -168,7 +170,8 @@ class AccountController extends AbstractController
 
         return $this->render('account/myAccount.html.twig', [
             'user' => $user,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'properties' => $repo->findAll(),
         ]);
     }
 

@@ -27,7 +27,7 @@ class Contact
      *     maxMessage="Votre nom doit comporter au maximum 50 caractères !"
      * )
      * @Assert\Regex(
-     *     pattern="/^[a-z\-îïâéèç]+$/i",
+     *     pattern="/^[a-z\-îïâéèç ]+$/i",
      *     message="Le nom doit comporter uniquement des lettres !"
      * )
      */

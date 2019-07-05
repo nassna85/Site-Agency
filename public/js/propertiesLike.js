@@ -1,5 +1,4 @@
-function onClickBtnLike(event)
-{
+function onClickBtnLike(event) {
     event.preventDefault();
 
     const url = this.href;
@@ -7,27 +6,23 @@ function onClickBtnLike(event)
 
     axios.get(url).then(function (response) {
 
-        if(icone.classList.contains('fas'))
-        {
+        if (icone.classList.contains('fas')) {
             icone.classList.replace('fas', 'far');
         }
-        else
-        {
+        else {
             icone.classList.replace('far', 'fas');
         }
 
     }).catch(function (error) {
-        if(error.response.status === 403)
-        {
-            alert("Vous devez être connecté...");
+        if (error.response.status === 403) {
+            window.location.href = "/login";
         }
-        else
-        {
-            alert("Une erreur est survenue. Veuillez rééssayer plus tard");
+        else {
+            window.location.href = "/_error/404";
         }
     });
 }
 
-document.querySelectorAll('a.js-like').forEach(function(link){
+document.querySelectorAll('a.js-like').forEach(function (link) {
     link.addEventListener('click', onClickBtnLike);
 });

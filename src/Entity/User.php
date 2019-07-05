@@ -40,7 +40,7 @@ class User implements UserInterface
      * @Assert\NotBlank(message="Veuillez indiquer un mot de passe !", groups={"registration"})
      * @Assert\Length(
      *     min="6",
-     *     minMessage="Votre mot de passe doit contenir au moins 8 caractères !",
+     *     minMessage="Votre mot de passe doit contenir au moins 6 caractères !",
      *     max="12",
      *     maxMessage="Votre mot de passe doit contenir au maximum 12 caractères !",
      *     groups={"registration"}

@@ -84,7 +84,7 @@ class AppFixtures extends Fixture
 
                 $manager->persist($image);
             }
-            for($j = 1; $j <= 10; $j++)
+            for($j = 1; $j <= mt_rand(2, 4); $j++)
             {
                 $contactForProperty = new ContactForProperty();
                 $contactForProperty->setMessage($faker->sentence())

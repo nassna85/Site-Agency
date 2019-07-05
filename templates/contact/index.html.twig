@@ -45,11 +45,13 @@
                     <div class="row mt-3">
                         <div class="col-md-6">
 
+                            <span class="errorName errorMessage"></span>
                             {{ form_row(form.name) }}
 
                         </div>
                         <div class="col-md-6">
 
+                            <span class="errorEmail errorMessage"></span>
                             {{ form_row(form.email) }}
 
                         </div>
@@ -58,18 +60,20 @@
                     <div class="row">
                         <div class="col-md-6">
 
+                            <span class="errorMessageContact errorMessage"></span>
                             {{ form_row(form.message) }}
 
                         </div>
                         <div class="col-md-6">
 
+                            <span class="errorPhoneNumber errorMessage"></span>
                             {{ form_row(form.phoneNumber) }}
 
                         </div>
                     </div>
 
                     <div class="form-group mt-3">
-                        <input type="submit" name="submit" id="submit" class="form-submit" value="Envoyer votre message" />
+                        <input type="submit" name="submit" id="btn-send-contact" class="form-submit" value="Envoyer votre message" />
                     </div>
 
                     {{ form_end(form) }}
@@ -107,5 +111,9 @@
             </section>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/contact.js"></script>
 {% endblock %}
 

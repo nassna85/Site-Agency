@@ -53,6 +53,29 @@
 
             {% endif %}
 
+            <h2 class="text-left mt-5 font-weight-bold">Liste de vos favoris</h2>
+            <div class="divider_title"></div>
+
+            {% if user.likes | length > 0 %}
+                
+                <div class="row">
+
+                    {% for property in properties if property.isLikedByUser(user) %}
+
+                        {% include 'properties/_property_card.html.twig' %}
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-info mt-5">
+                    Vous n'avez pas encore de favoris.
+                </div>
+
+            {% endif %}
+
             <h2 class="text-left mt-5 font-weight-bold">Votre avis compte</h2>
             <div class="divider_title"></div>
 
