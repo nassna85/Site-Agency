@@ -48,7 +48,7 @@ class Properties
      * @Assert\Length(
      *     min="5",
      *     max="255",
-     *     minMessage="Votre adresse doit faire au minimum 2 caractères !",
+     *     minMessage="Votre adresse doit faire au minimum 5 caractères !",
      *     maxMessage="Votre adresse doit faire au maximum 255 caractères !"
      * )
      */

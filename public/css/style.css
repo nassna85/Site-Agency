@@ -391,6 +391,7 @@ nav.bg-dark {
     color: #fff !important;
     text-transform: uppercase;
     font-size: 17px;
+    font-weight: bold;
 }
 nav img {
     background-color: transparent;
@@ -1084,6 +1085,7 @@ section.page_error_404 .jumbotron {
 
 section.page_error_404 h1 {
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 @media screen and (max-width:576px)

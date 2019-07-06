@@ -18,7 +18,7 @@ function onClickBtnLike(event) {
             window.location.href = "/login";
         }
         else {
-            window.location.href = "/_error/404";
+            window.location.href = "/not-found";
         }
     });
 }

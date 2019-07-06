@@ -3,6 +3,7 @@
 {% block title %}Modification du profil de {{ user.fullName }}{% endblock %}
 
 {% block body %}
+
     {# SECTION EDIT PROFILE #}
 
     <section id="edit-profile-user">
@@ -13,10 +14,20 @@
 
                 <h2 class="form-title">Un changement {{ user.firstName }} ?</h2>
 
-                {{ form_widget(form) }}
+                <span class="errorFirstName errorMessage"></span>
+                {{ form_row(form.firstName) }}
+
+                <span class="errorLastName errorMessage"></span>
+                {{ form_row(form.lastName) }}
+
+                <span class="errorEmail errorMessage"></span>
+                {{ form_row(form.email) }}
+
+                <span class="errorAvatar errorMessage"></span>
+                {{ form_row(form.avatar) }}
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Modifier mon profil</button>
+                    <button id="btn-edit-profile-user" type="submit" class="btn btn-primary">Modifier mon profil</button>
                 </div>
 
                 {{ form_end(form) }}
@@ -25,4 +36,9 @@
             </div>
         </div>
     </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/edit-profile-user.js"></script>
 {% endblock %}

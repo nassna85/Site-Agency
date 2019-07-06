@@ -13,8 +13,13 @@
                     <img src="{{ user.avatar | default('/images/avatar_default.png') }}" class="avatar-medium" alt="Image de {{ user.fullName }}"><br>
 
                     {% if user.properties | length > 0 %}
-                        <span class="badge badge-info mt-3">{{ user.properties| length }} annonce(s)</span>
+                        <span class="badge badge-info mt-3">{{ user.properties | length }} annonce(s)</span>
                     {% endif %}
+
+                    {% if user.likes | length > 0 %}
+                        <span class="badge badge-success mt-3">{{ user.likes | length }} favori(s)</span>
+                    {% endif %}
+
                 </div>
                 <div class="description_profile text-center my-5">
                     <h5>{{ user.fullName }}</h5>
@@ -91,10 +96,11 @@
 
                 {{ form_start(form) }}
 
+                <span class="errorMessageComment errorMessage"></span>
                 {{ form_widget(form) }}
 
                 <div class="form-group mb-5">
-                    <button type="submit" class="btn btn-primary">Envoyer votre commentaire</button>
+                    <button id="btn-send-comment" type="submit" class="btn btn-primary">Envoyer votre commentaire</button>
                 </div>
 
                 {{ form_end(form) }}
@@ -103,4 +109,8 @@
         </div>
     </section>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/contactForProperty.js"></script>
 {% endblock %}

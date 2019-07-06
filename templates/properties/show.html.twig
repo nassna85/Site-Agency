@@ -147,6 +147,7 @@
                    <div class="col-md-6">
                        {{ form_start(form) }}
 
+                       <span class="errorMessageForProperty errorMessage"></span>
                        {{ form_widget(form) }}
 
                        <div class="form-group mt-3">
@@ -179,4 +180,8 @@
 
     {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/contactForProperty.js"></script>
 {% endblock %}

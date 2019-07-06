@@ -19,13 +19,18 @@
 
                         {{ form_row(form.action) }}
                         {{ form_row(form.type) }}
+
+                        <span class="errorMaxPrice errorMessage"></span>
                         {{ form_row(form.maxPrice) }}
 
                     </div>
 
                     <div class="col-md-6">
 
+                        <span class="errorMinBedroom errorMessage"></span>
                         {{ form_row(form.minBedroom) }}
+
+                        <span class="errorMinArea errorMessage"></span>
                         {{ form_row(form.minArea) }}
 
                     </div>
@@ -68,4 +73,8 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/searchProperties.js"></script>
 {% endblock %}
