@@ -25,6 +25,10 @@ class Comments
      *     min="15",
      *     minMessage="Votre commentaire doit contenir au moins 15 caractères !"
      * )
+     * @Assert\Regex(
+     *     pattern="/[^<>]+$/i",
+     *     message="Veuillez ne pas utiliser de caractères spéciaux !"
+     * )
      */
     private $message;
 

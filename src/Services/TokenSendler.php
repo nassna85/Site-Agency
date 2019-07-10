@@ -25,7 +25,7 @@ class TokenSendler
 
     public function sendToken(User $user, Token $token)
     {
-        $message = (new \Swift_Message('House Agency : Confirmer votre inscription.'))
+        $message = (new \Swift_Message('House Agency : Confirmation de votre inscription.'))
                 ->setFrom('info@house-agency.com')
                 ->setTo($user->getEmail())
                 ->setBody(

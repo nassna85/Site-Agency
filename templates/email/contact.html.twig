@@ -3,13 +3,20 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Demande de contact</title>
+        <title>NaïmAgency - Demande de contact</title>
     </head>
     <body>
     <h2>Demande de contact de {{ contact.name }}</h2>
 
     <p>Nom : {{ contact.name }}</p>
     <p>Email : {{ contact.email }}</p>
+
+    {% if contact.phoneNumber %}
+        <p>Téléphone : {{ contact.phoneNumber }}</p>
+    {% endif %}
+
+    <hr>
+
     <p>Message : {{ contact.message | nl2br }}</p>
 
     </body>

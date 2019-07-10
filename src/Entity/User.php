@@ -66,8 +66,8 @@ class User implements UserInterface
      *     maxMessage="Votre prénom doit faire au maximum 50 caractères !"
      * )
      * @Assert\Regex(
-     *     pattern = "/^[a-z\-îïâéèç]+$/i",
-     *     message="Le prénom doit contenir que des lettres !"
+     *     pattern = "/^[a-zîïâéèç\-]+$/i",
+     *     message="Le prénom doit contenir que des lettres et sans espace !"
      * )
      */
     private $firstName;
@@ -82,8 +82,8 @@ class User implements UserInterface
      *     maxMessage="Votre nom doit faire au maximum 50 caractères !"
      * )
      * @Assert\Regex(
-     *     pattern = "/^[a-z\-îïâéèç]+$/i",
-     *     message="Le nom doit contenir que des lettres !"
+     *     pattern = "/^[a-zîïâéèç\- ]+$/i",
+     *     message="Le nom doit contenir que des lettres et sans espace !"
      * )
      */
     private $lastName;

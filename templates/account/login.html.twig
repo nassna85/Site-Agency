@@ -4,21 +4,21 @@
 
 {% block body %}
 
-    {# CONFIRMATION IF TOKEN VALID #}
-
-    {% if app.request.query.get('validationSuccess') %}
-        <div class="container">
-            <div class="alert alert-success">
-                Félicitation, votre compte a bien été activé. Vous pouvez désormais vous connecter.
-            </div>
-        </div>
-    {% endif %}
-
     {# SECTION FORM LOGIN #}
 
     <div class="main-signin">
         <div class="container-form">
             <div class="form-content">
+
+                {# CONFIRMATION IF TOKEN VALID #}
+
+                {% if app.request.query.get('validationSuccess') %}
+                    <div class="container">
+                        <div class="alert alert-success">
+                            Félicitation, votre compte a bien été activé. Vous pouvez désormais vous connecter.
+                        </div>
+                    </div>
+                {% endif %}
 
                 {% if error %}
                     <div class="alert alert-danger">

@@ -4,20 +4,20 @@
 
 {% block body %}
 
-    {# IF TOKEN EXPIRED #}
-    {% if app.request.query.get('tokenExpired') %}
-        <div class="container">
-            <div class="alert alert-danger">
-                Le token a expiré. Veuillez vous réinscrire et rééssayez à nouveau. Votre token n'est valide que 6 heures à partir de votre inscription.
-            </div>
-        </div>
-    {% endif %}
-
     {# FORM REGISTER #}
 
     <div class="main-signup">
         <div class="container-form">
             <div class="form-content">
+
+                {# IF TOKEN EXPIRED #}
+                {% if app.request.query.get('tokenExpired') %}
+                    <div class="container">
+                        <div class="alert alert-danger">
+                            Le token a expiré. Veuillez vous réinscrire et rééssayez à nouveau. Votre token n'est valide que 6 heures à partir de votre inscription.
+                        </div>
+                    </div>
+                {% endif %}
 
                 {{ form_start(form) }}
 

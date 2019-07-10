@@ -7,6 +7,8 @@
 
     <body>
         <h1>Bonjour, {{ user.firstName }}</h1>
-        <p>Pour confirmer votre inscription, veuillez confirmer votre inscription en cliquant sur le lien: <a href="{{ url('account_validation_token', {'value':token}) }}">Je confirme mon inscription</a> </p>
+        <p>Pour finaliser votre inscription, veuillez confirmer votre inscription en cliquant sur le lien: <a href="{{ url('account_validation_token', {'value':token}) }}">Je confirme mon inscription</a> </p>
+
+        <p><strong>NaïmAgency - Confirmation d'inscription</strong></p>
     </body>
 </html>

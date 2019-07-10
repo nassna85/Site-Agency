@@ -3,13 +3,14 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Demande de contact</title>
+        <title>NaïmAgency - Demande de contact d'une propriété</title>
     </head>
     <body>
     <h2>Demande de renseignement pour le bien n° {{ contactForProperty.property.id }}</h2>
 
     <p>Nom : {{ contactForProperty.author.fullName }}</p>
     <p>Email : {{ contactForProperty.author.email }}</p>
+    <hr>
     <p>Message : {{ contactForProperty.message | nl2br }}</p>
 
     </body>

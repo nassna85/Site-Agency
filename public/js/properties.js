@@ -82,7 +82,7 @@ $(function(){
             $(".errorAddress").fadeIn().text("Veuillez indiquer une adresse !");
             valid = false;
         }
-        else if(!address.match(/^[a-zéèçâäï0-9\- ]+$/i))
+        else if(!address.match(/^[a-zéèçâäï'0-9\- ]+$/i))
         {
             $(".errorAddress").hide("");
             $("#properties_address").css("borderColor", "red");

@@ -42,9 +42,9 @@ class ContactNotification
 
     public function notifyContactForProperty(ContactForProperty $contactProperty)
     {
-        $message = (new \Swift_Message("House Agency- Demande de renseignement pour le bien numéro" . $contactProperty->getId()))
+        $message = (new \Swift_Message("House Agency - Demande de renseignement pour le bien numéro" . $contactProperty->getId()))
             ->setFrom($contactProperty->getAuthor()->getEmail())
-            ->setTo("nassna1085@gmail.com")
+            ->setTo("nassna85@hotmail.fr")
             ->setReplyTo($contactProperty->getAuthor()->getEmail())
             ->setBody($this->renderer->render('email/contactForProperty.html.twig', [
                 'contactForProperty' => $contactProperty

@@ -51,6 +51,10 @@ class Properties
      *     minMessage="Votre adresse doit faire au minimum 5 caractères !",
      *     maxMessage="Votre adresse doit faire au maximum 255 caractères !"
      * )
+     * @Assert\Regex(
+     *     pattern = "/^[a-zéèçâäï'0-9\. ]+$/i",
+     *     message="L'adresse ne doit contenir que des chiffres et des lettres !"
+     * )
      */
     private $address;
 

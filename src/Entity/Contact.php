@@ -43,8 +43,8 @@ class Contact
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Regex(
-     *     pattern="/^[0-9\/\.]+?$/i",
-     *     message="Entrez un numéro valide. '488896745' !"
+     *     pattern="/[0-9]+$/i",
+     *     message="Entrez un numéro valide. '488896745' Pas d'espaces ni de séparations !"
      * )
      */
     private $phoneNumber;

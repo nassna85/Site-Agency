@@ -78,7 +78,7 @@ $(function(){
             $("#contact_message").css("borderColor", "green");
         }
 
-        if(phone && !phone.match(/[0-9\.?\/? ]+$/i))
+        if(phone && !phone.match(/[0-9]+$/i))
         {
             $(".errorPhoneNumber").hide().text("");
             $("#contact_phoneNumber").css("borderColor", "red");
