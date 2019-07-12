@@ -25,8 +25,8 @@ class TokenSendler
 
     public function sendToken(User $user, Token $token)
     {
-        $message = (new \Swift_Message('House Agency : Confirmation de votre inscription.'))
-                ->setFrom('info@house-agency.com')
+        $message = (new \Swift_Message('NaïmAgency : Confirmation de votre inscription.'))
+                ->setFrom('contact@naimagency.be')
                 ->setTo($user->getEmail())
                 ->setBody(
                     $this->twig->render(

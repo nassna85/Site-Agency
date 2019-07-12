@@ -28,7 +28,7 @@ class ContactNotification
 
     public function notifyContact(Contact $contact)
     {
-        $message = (new \Swift_Message("House Agency - Demande de contact de " . $contact->getName()))
+        $message = (new \Swift_Message("Naïm Agency - Demande de contact de " . $contact->getName()))
             ->setFrom($contact->getEmail())
             ->setTo("nassna85@hotmail.fr")
             ->setReplyTo($contact->getEmail())
@@ -42,7 +42,7 @@ class ContactNotification
 
     public function notifyContactForProperty(ContactForProperty $contactProperty)
     {
-        $message = (new \Swift_Message("House Agency - Demande de renseignement pour le bien numéro" . $contactProperty->getId()))
+        $message = (new \Swift_Message("Naïm Agency - Demande de renseignement pour le bien numéro" . $contactProperty->getId()))
             ->setFrom($contactProperty->getAuthor()->getEmail())
             ->setTo("nassna85@hotmail.fr")
             ->setReplyTo($contactProperty->getAuthor()->getEmail())
