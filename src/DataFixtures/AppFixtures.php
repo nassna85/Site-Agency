@@ -28,16 +28,6 @@ class AppFixtures extends Fixture
 
         $users = [];
 
-        $adminUser = new User();
-        $adminUser->setLastName('admin')
-                  ->setFirstName('admin')
-                  ->setEmail('naim@admin.com')
-                  ->setAvatar("https://loremflickr.com/64/64")
-                  ->setPassword($this->encoder->encodePassword($adminUser, 'password'))
-                  ->setRoles(['ROLE_ADMIN'])
-                  ->setActive(true);
-        $manager->persist($adminUser);
-
 
         for($i = 0; $i < 15; $i++)
         {
@@ -46,8 +36,8 @@ class AppFixtures extends Fixture
             $user->setLastName($faker->lastName)
                  ->setFirstName($faker->firstName)
                  ->setEmail($faker->email)
-                 ->setAvatar("https://loremflickr.com/64/64")
-                 ->setPassword($this->encoder->encodePassword($user, 'password'))
+                 ->setAvatar("http://lorempixel.com/64/64")
+                 ->setPassword($this->encoder->encodePassword($user, 'motdepassepassword321'))
                  ->setRoles(['ROLE_USER'])
                  ->setActive(true);
 
@@ -73,6 +63,7 @@ class AppFixtures extends Fixture
                        ->setCoverImage("http://lorempixel.com/800/400")
                        ->setDescription("<p>" . join("</p><p>", $faker->paragraphs(4)) . "</p>")
                        ->setAction($faker->randomElement($actions))
+                       ->setApproved(true)
                        ->setAuthor($faker->randomElement($users));
 
             for($j = 1; $j <= mt_rand(2, 5); $j++)
@@ -110,7 +101,8 @@ class AppFixtures extends Fixture
         {
             $comment = new Comments();
             $comment->setMessage($faker->paragraph())
-                    ->setAuthor($faker->randomElement($users));
+                    ->setAuthor($faker->randomElement($users))
+                    ->setApproved(true);
 
             $manager->persist($comment);
         }

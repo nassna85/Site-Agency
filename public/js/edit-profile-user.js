@@ -78,7 +78,7 @@ $(function(){
             $(".errorEmail").fadeIn().text("Veuillez indiquer une adresse email !");
             valid = false;
         }
-        else if(!email.match(/^[a-z0-9]+[@]{1}[a-z]{3,8}[\.][a-z]{2,3}$/i))
+        else if(!email.match(/^[a-z0-9\.\-\_]+[@]{1}[a-z]{3,8}[\.][a-z]{2,3}$/i))
         {
             $(".errorEmail").hide().text("");
             $("#account_email").css("borderColor", "red");
